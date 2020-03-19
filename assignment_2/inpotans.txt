@@ -1,0 +1,11 @@
+A C B u- / +
+A C B u- / +
+B u- A +
+B 2 ^ 4 A * C u- + -
+B u- 2 ^ 4 u- A * C u- + -
+B u- A ^
+4 A C * * B u- A ^ C + -
+B u- A ^ C +
+B A C * D - -
+ERROR
+A B sqrt +

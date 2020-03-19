@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<!-- saved from url=(0086)http://c4learn.com/c-programs/c-program-to-implement-binary-search-tree-traversal.html -->
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+
+<!-- reset viewport for mobile -->
+
+
+<title>C Program to Implement Binary Search Tree Traversal - Basic C Programs | C Programming Examples</title>
+
+
+<!-- wp_header -->
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.4.23 - http://yoast.com/wordpress/seo/ -->
+<link rel="canonical" href="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C Program to Implement Binary Search Tree Traversal - Basic C Programs | C Programming Examples">
+<meta property="og:description" content="C Program to implement Binary Search Tree Traversal Preorder traversal sequence : F, B, A, D, C, E, G, I, H (root, left, right) Inorder traversal sequence : A, B, C, D, E, F, G, H, I (left, root, right) Postorder traversal sequence: A, C, E, D, B, H, I, G, F (left, right, root)(...)">
+<meta property="og:url" content="http://c4learn.com/c-programs/c-program-to-implement-binary-search-tree-traversal.html">
+<meta property="og:site_name" content="Basic C Programs | C Programming Examples">
+<meta property="article:section" content="Tree Programs">
+<meta property="article:published_time" content="2012-01-15T07:35:54+00:00">
+<meta property="article:modified_time" content="2013-06-03T01:48:43+00:00">
+<meta property="og:image" content="http://img.c4learn.com/2012/01/350px-Sorted_binary_tree.svg_1.png">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Basic C Programs | C Programming Examples » Feed" href="http://c4learn.com/c-programs/feed">
+<link rel="alternate" type="application/rss+xml" title="Basic C Programs | C Programming Examples » Comments Feed" href="http://c4learn.com/c-programs/comments/feed">
+<link rel="stylesheet" id="themify-shortcodes-css" href="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/shortcodes.css" type="text/css" media="all">
+<link rel="stylesheet" id="theme-style-css" href="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="themify-media-queries-css" href="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/media-queries.css" type="text/css" media="all">
+<link rel="stylesheet" id="custom-style-css" href="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/custom_style.css" type="text/css" media="all">
+<link rel="stylesheet" id="ubermenu-basic-css" href="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/basic.css" type="text/css" media="all">
+<link rel="stylesheet" id="ubermenu-blue-silver-css" href="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/bluesilver.css" type="text/css" media="all">
+<script async="" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/v2"></script><script async="" type="text/javascript" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/tc.js"></script><script src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/cb=gapi.loaded_2" async=""></script><script src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/cb=gapi.loaded_1" async=""></script><script async="" type="text/javascript" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/saved_resource"></script><script src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/saved_resource(1)" async="" type="text/javascript"></script><script src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/ga.js"></script><script type="text/javascript" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/jquery.js"></script><style type="text/css"></style>
+<script type="text/javascript" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var client = {"client_ip":"14.139.82.6","clickcount":"","bannedperiod":"","preurl":"http:\/\/c4learn.com\/c-programs\/wp-content\/plugins\/cbprotect\/clickupdate.php","firstclickdate":[[""],[""]],"updatedVisitCount":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/click_bomb_check.js"></script>
+<script type="text/javascript" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/hidediv.js"></script>
+<link rel="shortlink" href="http://c4learn.com/c-programs/?p=3295">
+
+<!-- Open Graph Tags -->
+<meta property="og:site_name" content="Basic C Programs | C Programming Examples">
+<meta property="og:type" content="article">
+<meta property="og:description" content="C Program to implement Binary Search Tree Traversal Preorder traversal sequence : F, B, A, D, C, E, G, I, H (root, left, right) Inorder traversal sequence : A, B, C, D, E, F, G, H, I (left, root, right) Postorder traversal sequence: A, C, E, D, B, H, I, G, F (left, right, root)(...)">
+<meta property="og:url" content="http://c4learn.com/c-programs/c-program-to-implement-binary-search-tree-traversal.html">
+<meta property="og:title" content="C Program to Implement Binary Search Tree Traversal">
+<!-- End Open Graph Tags -->
+
+<!-- modules styling -->
+<style type="text/css">
+body {
+background-image: none;
+background-repeat: repeat;
+}
+
+#nav-bar {
+background-image: none;
+}
+
+#headerwrap {
+background-image: none;
+background-repeat: repeat;
+}
+
+#footerwrap {
+background-image: none;
+}
+
+body {
+color: #000000;
+font-size: 16px;
+}
+
+h1 {
+font-weight: bold;
+}
+
+h2 {
+font-size: 20px;
+font-weight: bold;
+text-decoration: underline;
+}
+
+h3 {
+font-size: 18px;
+font-weight: bold;
+}
+
+#header {
+background-image: none;
+background-color: transparent;
+}
+
+#site-logo {
+position: relative;
+}
+
+.post-title {
+font-family: Palatino, "Palatino Linotype", "Book Antiqua", serif;
+color: #000000;
+font-size: 22px;
+font-style: normal;
+}
+
+.page-title {
+font-size: 25px;
+font-weight: bold;
+}
+
+#sidebar {
+font-family: Palatino, "Palatino Linotype", "Book Antiqua", serif;
+font-size: 14px;
+}
+
+#sidebar .widgettitle {
+color: #ffffff;
+border: 2px solid #1;
+background-color: #258a25;
+padding-top: 6px;
+padding-right: 2px;
+padding-bottom: 5px;
+padding-left: 5px;
+margin-top: 3px;
+}
+
+</style>
+
+<link href="http://www.c4learn.com/wp-content/uploads/2012/11/C.jpg" rel="shortcut icon"> 
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35959999-1']);
+  _gaq.push(['_setDomainName', 'c4learn.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- custom css -->
+
+<style type="text/css">pre{background-color:#fff;border:1px solid #ddd;	padding:5px;font-size:15px;line-height:18px;font-family:"Courier New", Courier, monospace;margin-bottom: 10px;margin-top: 10px;}
+.grid3 .post-title {font-size: 1.2em; margin: 8px 0; }
+#header{height: 0px; padding-top: 1px; border-bottom: solid 0px #fff;}
+.post-content a,.page-content a {color : #4B53AC;}
+.widget {margin: 0 0 10px;}
+.grid2 .post-title {margin: 5px 0;font-size: 1.2em;font-weight: bold;}
+#main-nav {text-align: left;}
+.easy-table th, .easy-table td {border-top: 1px solid #A8A8A8;}
+#content {margin: 10px 0 10px;}
+.post-nav {margin: 0 0 10px 0px;background-color: #F3F3EC;font: normal 100%/140% "OFL Sorts Mill Goudy TT", Georgia, Times, serif;
+font-weight: bold;padding: 5px 0 5px 0px;}
+.post-nav a {color: #009900;}
+.list-post .post {margin-bottom: 20px;padding-left: 0px;}
+td a {text-decoration: none;}
+.post-title {border-bottom: 1px solid #000;padding-bottom:10px;margin-bottom:10px;}
+#sidebar{margin: 10px 0 20px;}
+.easy-table td {line-height: 25px;}
+#footer {padding: 0px 0 10px;}
+
+#sidebar .secondary {width: 145px;}
+#sidebar li a:visited {color: #336699;}
+
+.footer-text {margin: 10px 0 15px;}
+.list-post .post-meta span {background: #000;padding: 5px;}
+.list-post .post-meta a {font-variant: normal;color: #fff;}
+.tag-post-title {
+border-bottom: 1px solid #000;padding-bottom: 10px;margin-bottom: 10px;
+font-family: Palatino, "Palatino Linotype", "Book Antiqua", serif;color: #000000;font-size: 16px;font-style: normal;margin-top: 10px;}
+.tag-post-title a {text-decoration: none;}
+.mtq_explanation-label {padding: 5px 0px .25em 5px;background-color: #EFEFFB;border-bottom: 1px solid #D8D8D8;margin-bottom: 10px;}
+
+#contentwrap, #sidebar {padding-top: 0%;}
+.post-meta {font: normal 14px 'Noto Sans', "Times New Roman", Times, serif;
+margin: 0 0 8px;|
+element.style {width: 476px;}
+
+.widgettitle {
+color: #ffffff;background-color: #258a25;
+margin-top: 5px;margin: 0 0 10px;padding: 6px 2px 5px 15px;font-size: 16px;
+text-transform: uppercase;font-style: normal;}
+
+.multi-column-taxonomy-list ul {width: 46%;}
+.page-title {border-bottom: 1px solid;padding-bottom: 10px;}
+
+.gsc-control-cse {
+padding: 0em;}
+
+.shortcode.col2-1.first {padding-top: 0px;}</style>
+	<!-- media-queries.js -->
+	<!--[if lt IE 9]>
+		<script src="http://cp.c4learn.com/wp-content/themes/responz/js/respond.js"></script>
+	<![endif]-->
+	
+	<!-- html5.js -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+	<!--[if lt IE 9]>
+	<script src="http://s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script> 
+	<![endif]-->
+	
+<!-- UberMenu CSS - Controlled through UberMenu Options Panel 
+================================================================ -->
+<style type="text/css" id="ubermenu-style-generator-css">
+/* Image Text Padding */
+#megaMenu .ss-nav-menu-with-img > a > .wpmega-link-title, #megaMenu .ss-nav-menu-with-img > a > .wpmega-link-description, #megaMenu .ss-nav-menu-with-img > a > .wpmega-item-description, #megaMenu .ss-nav-menu-with-img > span.um-anchoremulator > .wpmega-link-title, #megaMenu .ss-nav-menu-with-img > span.um-anchoremulator > .wpmega-link-description, #megaMenu .ss-nav-menu-with-img > span.um-anchoremulator > .wpmega-item-description{
+  padding-left: 23px;
+}	
+</style>
+<!-- end UberMenu CSS -->
+		
+			
+<script async="" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/small.js"></script></head>
+
+<body class="single single-post postid-3295 single-format-status skin-default gecko sidebar2" style="">
+
+<div id="pagewrap">
+
+	<div id="headerwrap">
+
+		<!-- <div id="nav-bar">
+			<div class="pagewidth clearfix">
+							</div>
+		</div> -->
+		<!-- /nav-bar -->
+
+				<header id="header" class="pagewidth">
+        			
+			<hgroup>
+				<div id="site-logo"><a href="http://c4learn.com/c-programs" title="Basic C Programs | C Programming Examples"><img src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/c4learn.gif" alt="Basic C Programs | C Programming Examples" width="260" height="80"></a></div>	
+				<!-- <h2 id="site-description">Just another WordPress site</h2> -->
+			</hgroup>
+	
+			<div class="header-widget">
+							</div>
+			<!--/header widget --> 
+
+			
+			<div class="social-widget">
+					
+							</div>
+			<!-- /.social-widget -->
+
+            <div id="main-nav-wrap">
+                <div id="menu-icon" class="mobile-button"></div>
+                <nav>
+                    <div id="megaMenu" class="megaMenuContainer wpmega-preset-blue-silver megaResponsive megaResponsiveToggle wpmega-withjs megaMenuOnHover megaFullWidth megaMenuHorizontal wpmega-noconflict megaMinimizeResiduals megaResetStyles megaMenu-withjs"><div id="megaMenuToggle" class="megaMenuToggle">Menu&nbsp; <span class="megaMenuToggle-icon"></span></div><ul id="megaUber" class="megaMenu"><li id="menu-item-9901" class="menu-item menu-item-type-custom menu-item-object-custom ss-nav-menu-item-0 ss-nav-menu-item-depth-0 ss-nav-menu-reg"><a href="http://www.c4learn.com/"><span class="wpmega-link-title">Home</span></a></li><li id="menu-item-9902" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children mega-with-sub ss-nav-menu-item-1 ss-nav-menu-item-depth-0 ss-nav-menu-reg"><a href="http://www.c4learn.com/"><span class="wpmega-link-title">C Programming</span></a>
+<ul class="sub-menu sub-menu-1" style="display: none;">
+<li id="menu-item-9903" class="menu-item menu-item-type-custom menu-item-object-custom ss-nav-menu-item-depth-1"><a href="http://www.c4learn.com/c-programs/"><span class="wpmega-link-title">200+ C Programs</span></a></li><li id="menu-item-9904" class="menu-item menu-item-type-custom menu-item-object-custom ss-nav-menu-item-depth-1"><a href="http://justmcq.com/programming/c-language/"><span class="wpmega-link-title">C Programming : MCQ</span></a></li></ul>
+</li><li id="menu-item-9905" class="menu-item menu-item-type-custom menu-item-object-custom ss-nav-menu-item-2 ss-nav-menu-item-depth-0 ss-nav-menu-reg"><a href="http://www.c4learn.com/learn-c-programming-language-step-by-step-tutorials-2"><span class="wpmega-link-title">C++</span></a></li><li id="menu-item-9906" class="menu-item menu-item-type-custom menu-item-object-custom ss-nav-menu-item-3 ss-nav-menu-item-depth-0 ss-nav-menu-reg"><a href="http://www.javaprogramming4learn.com/learn-java-programming-language-step-by-step-index/"><span class="wpmega-link-title">Java</span></a></li></ul></div>                </nav>
+		<!-- /#main-nav -->		
+	</div>
+            <!-- /#main-nav-wrap -->
+
+					</header>
+		<!-- /#header -->
+        				
+	</div>
+	<!-- /#headerwrap -->
+	
+	<div id="body" class="clearfix"> 
+	
+
+	<!-- layout-container -->
+	<div id="layout" class="pagewidth clearfix">
+		
+		<div id="contentwrap">
+        	
+            			<!-- content -->
+			<div id="content" class="list-post">
+            					
+				
+
+
+<article id="post-3295" class="post-3295 post type-post status-publish format-status hentry category-tree-programs post clearfix cat-60">
+		
+	
+	<div class="post-content">
+	
+		
+												<h1 class="post-title">C Program to Implement Binary Search Tree Traversal</h1>
+								    
+
+				
+
+	<!-- post-nav -->
+	<div class="post-nav clearfix"> 
+					</div>
+	<!-- /post-nav -->
+<div id="cbprotect">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-8564525228188727";
+/* Programming : Before */
+google_ad_slot = "7206229992";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div> 
+   
+		
+				
+			<h2>C Program to implement Binary Search Tree Traversal</h2>
+<pre><a href="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/350px-Sorted_binary_tree.svg_1.png"><img class="aligncenter size-full wp-image-3296" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/350px-Sorted_binary_tree.svg_1.png" alt="" width="350" height="279"></a></pre>
+<pre>Preorder traversal sequence : F, B, A, D, C, E, G, I, H
+   (root, left, right)
+Inorder traversal sequence  : A, B, C, D, E, F, G, H, I
+   (left, root, right)
+Postorder traversal sequence: A, C, E, D, B, H, I, G, F
+   (left, right, root)</pre>
+<p><strong>Reference :</strong> <a title="Tree Traversal in C" href="http://en.wikipedia.org/wiki/Tree_traversal" target="_blank">http://en.wikipedia.org/wiki/Tree_traversal</a></p>
+<hr><strong>Program :</strong><p></p>
+<pre style="color: #000020;background: #f6f8ff"><span style="color: #004a43"># </span><span style="color: #004a43">include </span><span style="color: #800000">&lt;</span><span style="color: #40015a">stdio.h</span><span style="color: #800000">&gt;</span>
+<span style="color: #004a43"># </span><span style="color: #004a43">include </span><span style="color: #800000">&lt;</span><span style="color: #40015a">conio.h</span><span style="color: #800000">&gt;</span>
+<span style="color: #004a43"># </span><span style="color: #004a43">include </span><span style="color: #800000">&lt;</span><span style="color: #40015a">stdlib.h</span><span style="color: #800000">&gt;</span>
+
+<span style="color: #200080;font-weight: bold">typedef</span> <span style="color: #200080;font-weight: bold">struct</span> BST
+<span style="color: #406080">{</span>
+    <span style="color: #200080;font-weight: bold">int</span> data<span style="color: #406080">;</span>
+    <span style="color: #200080;font-weight: bold">struct</span> BST <span style="color: #308080">*</span>lchild<span style="color: #308080">,</span><span style="color: #308080">*</span>rchild<span style="color: #406080">;</span>
+<span style="color: #406080">}</span>node<span style="color: #406080">;</span>
+
+<span style="color: #200080;font-weight: bold">void</span> insert<span style="color: #308080">(</span>node <span style="color: #308080">*</span><span style="color: #308080">,</span>node <span style="color: #308080">*</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+<span style="color: #200080;font-weight: bold">void</span> inorder<span style="color: #308080">(</span>node <span style="color: #308080">*</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+<span style="color: #200080;font-weight: bold">void</span> preorder<span style="color: #308080">(</span>node <span style="color: #308080">*</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+<span style="color: #200080;font-weight: bold">void</span> postorder<span style="color: #308080">(</span>node <span style="color: #308080">*</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+node <span style="color: #308080">*</span><span style="color: #003060">search</span><span style="color: #308080">(</span>node <span style="color: #308080">*</span><span style="color: #308080">,</span><span style="color: #200080;font-weight: bold">int</span><span style="color: #308080">,</span>node <span style="color: #308080">*</span><span style="color: #308080">*</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+<span style="color: #200080;font-weight: bold">void</span> <span style="color: #400000">main</span><span style="color: #308080">(</span><span style="color: #308080">)</span>
+<span style="color: #406080">{</span>
+ <span style="color: #200080;font-weight: bold">int</span> choice<span style="color: #406080">;</span>
+ <span style="color: #200080;font-weight: bold">char</span> ans<span style="color: #308080">=</span><span style="color: #1060b6">'N'</span><span style="color: #406080">;</span>
+ <span style="color: #200080;font-weight: bold">int</span> key<span style="color: #406080">;</span>
+ node <span style="color: #308080">*</span>new_node<span style="color: #308080">,</span><span style="color: #308080">*</span>root<span style="color: #308080">,</span><span style="color: #308080">*</span>tmp<span style="color: #308080">,</span><span style="color: #308080">*</span>parent<span style="color: #406080">;</span>
+ node <span style="color: #308080">*</span>get_node<span style="color: #308080">(</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+ root<span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #406080">;</span>
+ clrscr<span style="color: #308080">(</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+ <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">Program For Binary Search Tree </span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+ <span style="color: #200080;font-weight: bold">do</span>
+ <span style="color: #406080">{</span>
+   <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">1.Create</span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+   <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">2.Search</span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+   <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">3.Recursive Traversals</span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+   <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">4.Exit</span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+   <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">Enter your choice :</span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+   <span style="color: #003060">scanf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">%d</span><span style="color: #800000">"</span><span style="color: #308080">,</span><span style="color: #308080">&amp;</span>choice<span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+   <span style="color: #200080;font-weight: bold">switch</span><span style="color: #308080">(</span>choice<span style="color: #308080">)</span>
+   <span style="color: #406080">{</span>
+    <span style="color: #200080;font-weight: bold">case </span><span style="color: #008c00">1</span><span style="color: #e34adc">:</span>
+           <span style="color: #200080;font-weight: bold">do</span>
+             <span style="color: #406080">{</span>
+             new_node<span style="color: #308080">=</span>get_node<span style="color: #308080">(</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">Enter The Element </span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+             <span style="color: #003060">scanf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">%d</span><span style="color: #800000">"</span><span style="color: #308080">,</span><span style="color: #308080">&amp;</span>new_node<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>root<span style="color: #308080">=</span><span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #308080">)</span>   <span style="color: #595979">/* Tree is not Created */</span>
+                 root<span style="color: #308080">=</span>new_node<span style="color: #406080">;</span>
+             <span style="color: #200080;font-weight: bold">else</span>
+                 insert<span style="color: #308080">(</span>root<span style="color: #308080">,</span>new_node<span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">Want To enter More Elements?(y/n)</span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+             ans<span style="color: #308080">=</span>getch<span style="color: #308080">(</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #406080">}</span><span style="color: #200080;font-weight: bold">while</span><span style="color: #308080">(</span>ans<span style="color: #308080">=</span><span style="color: #308080">=</span><span style="color: #1060b6">'y'</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #200080;font-weight: bold">break</span><span style="color: #406080">;</span>
+
+     <span style="color: #200080;font-weight: bold">case </span><span style="color: #008c00">2</span><span style="color: #e34adc">:</span>
+             <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">Enter Element to be searched :</span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+             <span style="color: #003060">scanf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">%d</span><span style="color: #800000">"</span><span style="color: #308080">,</span><span style="color: #308080">&amp;</span>key<span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             tmp <span style="color: #308080">=</span> <span style="color: #003060">search</span><span style="color: #308080">(</span>root<span style="color: #308080">,</span>key<span style="color: #308080">,</span><span style="color: #308080">&amp;</span>parent<span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">Parent of node </span><span style="color: #0f69ff">%d</span><span style="color: #1060b6"> is </span><span style="color: #0f69ff">%d</span><span style="color: #800000">"</span><span style="color: #308080">,</span>
+                              tmp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">,</span>parent<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">)</span><span style="color: #406080">;</span>
+             <span style="color: #200080;font-weight: bold">break</span><span style="color: #406080">;</span>
+
+    <span style="color: #200080;font-weight: bold">case </span><span style="color: #008c00">3</span><span style="color: #e34adc">:</span>
+
+            <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>root<span style="color: #308080">=</span><span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #308080">)</span>
+                <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #1060b6">Tree Is Not Created</span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+            <span style="color: #200080;font-weight: bold">else</span>
+               <span style="color: #406080">{</span>
+               <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">The Inorder display : </span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+               inorder<span style="color: #308080">(</span>root<span style="color: #308080">)</span><span style="color: #406080">;</span>
+               <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">The Preorder display : </span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+               preorder<span style="color: #308080">(</span>root<span style="color: #308080">)</span><span style="color: #406080">;</span>
+               <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">The Postorder display : </span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+               postorder<span style="color: #308080">(</span>root<span style="color: #308080">)</span><span style="color: #406080">;</span>
+               <span style="color: #406080">}</span>
+
+            <span style="color: #200080;font-weight: bold">break</span><span style="color: #406080">;</span>
+    <span style="color: #406080">}</span>
+ <span style="color: #406080">}</span><span style="color: #200080;font-weight: bold">while</span><span style="color: #308080">(</span>choice<span style="color: #308080">!</span><span style="color: #308080">=</span><span style="color: #008c00">4</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+<span style="color: #406080">}</span>
+<span style="color: #595979">/*</span>
+<span style="color: #595979">&nbsp;&nbsp;Get new Node </span>
+<span style="color: #595979">*/</span>
+node <span style="color: #308080">*</span>get_node<span style="color: #308080">(</span><span style="color: #308080">)</span>
+ <span style="color: #406080">{</span>
+ node <span style="color: #308080">*</span>temp<span style="color: #406080">;</span>
+ temp<span style="color: #308080">=</span><span style="color: #308080">(</span>node <span style="color: #308080">*</span><span style="color: #308080">)</span><span style="color: #003060">malloc</span><span style="color: #308080">(</span><span style="color: #200080;font-weight: bold">sizeof</span><span style="color: #308080">(</span>node<span style="color: #308080">)</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+ temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>lchild<span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #406080">;</span>
+ temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>rchild<span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #406080">;</span>
+ <span style="color: #200080;font-weight: bold">return</span> temp<span style="color: #406080">;</span>
+ <span style="color: #406080">}</span>
+<span style="color: #595979">/*</span>
+<span style="color: #595979">&nbsp;&nbsp;This function is for creating a binary search tree </span>
+<span style="color: #595979">*/</span>
+<span style="color: #200080;font-weight: bold">void</span> insert<span style="color: #308080">(</span>node <span style="color: #308080">*</span>root<span style="color: #308080">,</span>node <span style="color: #308080">*</span>new_node<span style="color: #308080">)</span>
+<span style="color: #406080">{</span>
+  <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>new_node<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data <span style="color: #308080">&lt;</span> root<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">)</span>
+     <span style="color: #406080">{</span>
+     <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>root<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>lchild<span style="color: #308080">=</span><span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #308080">)</span>
+         root<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>lchild <span style="color: #308080">=</span> new_node<span style="color: #406080">;</span>
+     <span style="color: #200080;font-weight: bold">else</span>
+         insert<span style="color: #308080">(</span>root<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>lchild<span style="color: #308080">,</span>new_node<span style="color: #308080">)</span><span style="color: #406080">;</span>
+     <span style="color: #406080">}</span>
+
+  <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>new_node<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data <span style="color: #308080">&gt;</span> root<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">)</span>
+     <span style="color: #406080">{</span>
+     <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>root<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>rchild<span style="color: #308080">=</span><span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #308080">)</span>
+         root<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>rchild<span style="color: #308080">=</span>new_node<span style="color: #406080">;</span>
+     <span style="color: #200080;font-weight: bold">else</span>
+         insert<span style="color: #308080">(</span>root<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>rchild<span style="color: #308080">,</span>new_node<span style="color: #308080">)</span><span style="color: #406080">;</span>
+     <span style="color: #406080">}</span>
+<span style="color: #406080">}</span>
+<span style="color: #595979">/*</span>
+<span style="color: #595979">This function is for searching the node from</span>
+<span style="color: #595979">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binary Search Tree</span>
+<span style="color: #595979">*/</span>
+node <span style="color: #308080">*</span><span style="color: #003060">search</span><span style="color: #308080">(</span>node <span style="color: #308080">*</span>root<span style="color: #308080">,</span><span style="color: #200080;font-weight: bold">int</span> key<span style="color: #308080">,</span>node <span style="color: #308080">*</span><span style="color: #308080">*</span>parent<span style="color: #308080">)</span>
+<span style="color: #406080">{</span>
+ node <span style="color: #308080">*</span>temp<span style="color: #406080">;</span>
+ temp<span style="color: #308080">=</span>root<span style="color: #406080">;</span>
+    <span style="color: #200080;font-weight: bold">while</span><span style="color: #308080">(</span>temp<span style="color: #308080">!</span><span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #308080">)</span>
+    <span style="color: #406080">{</span>
+      <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">=</span><span style="color: #308080">=</span>key<span style="color: #308080">)</span>
+         <span style="color: #406080">{</span>
+         <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6"> The </span><span style="color: #0f69ff">%d</span><span style="color: #1060b6"> Element is Present</span><span style="color: #800000">"</span><span style="color: #308080">,</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">)</span><span style="color: #406080">;</span>
+         <span style="color: #200080;font-weight: bold">return</span> temp<span style="color: #406080">;</span>
+         <span style="color: #406080">}</span>
+      <span style="color: #308080">*</span>parent<span style="color: #308080">=</span>temp<span style="color: #406080">;</span>
+
+      <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">&gt;</span>key<span style="color: #308080">)</span>
+         temp<span style="color: #308080">=</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>lchild<span style="color: #406080">;</span>
+      <span style="color: #200080;font-weight: bold">else</span>
+         temp<span style="color: #308080">=</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>rchild<span style="color: #406080">;</span>
+    <span style="color: #406080">}</span>
+ <span style="color: #200080;font-weight: bold">return</span> <span style="color: #7d0045">NULL</span><span style="color: #406080">;</span>
+<span style="color: #406080">}</span>
+<span style="color: #595979">/*</span>
+<span style="color: #595979">This function displays the tree in inorder fashion</span>
+<span style="color: #595979">*/</span>
+<span style="color: #200080;font-weight: bold">void</span> inorder<span style="color: #308080">(</span>node <span style="color: #308080">*</span>temp<span style="color: #308080">)</span>
+<span style="color: #406080">{</span>
+   <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>temp<span style="color: #308080">!</span><span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #308080">)</span>
+    <span style="color: #406080">{</span>
+    inorder<span style="color: #308080">(</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>lchild<span style="color: #308080">)</span><span style="color: #406080">;</span>
+    <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">%d</span><span style="color: #800000">"</span><span style="color: #308080">,</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">)</span><span style="color: #406080">;</span>
+    inorder<span style="color: #308080">(</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>rchild<span style="color: #308080">)</span><span style="color: #406080">;</span>
+    <span style="color: #406080">}</span>
+<span style="color: #406080">}</span>
+<span style="color: #595979">/*</span>
+<span style="color: #595979">This function displays the tree in preorder fashion</span>
+<span style="color: #595979">*/</span>
+<span style="color: #200080;font-weight: bold">void</span> preorder<span style="color: #308080">(</span>node <span style="color: #308080">*</span>temp<span style="color: #308080">)</span>
+<span style="color: #406080">{</span>
+ <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>temp<span style="color: #308080">!</span><span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #308080">)</span>
+    <span style="color: #406080">{</span>
+    <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">%d</span><span style="color: #800000">"</span><span style="color: #308080">,</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">)</span><span style="color: #406080">;</span>
+    preorder<span style="color: #308080">(</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>lchild<span style="color: #308080">)</span><span style="color: #406080">;</span>
+    preorder<span style="color: #308080">(</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>rchild<span style="color: #308080">)</span><span style="color: #406080">;</span>
+    <span style="color: #406080">}</span>
+<span style="color: #406080">}</span>
+
+<span style="color: #595979">/*</span>
+<span style="color: #595979">This function displays the tree in postorder fashion</span>
+<span style="color: #595979">*/</span>
+<span style="color: #200080;font-weight: bold">void</span> postorder<span style="color: #308080">(</span>node <span style="color: #308080">*</span>temp<span style="color: #308080">)</span>
+<span style="color: #406080">{</span>
+ <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>temp<span style="color: #308080">!</span><span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #308080">)</span>
+    <span style="color: #406080">{</span>
+    postorder<span style="color: #308080">(</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>lchild<span style="color: #308080">)</span><span style="color: #406080">;</span>
+    postorder<span style="color: #308080">(</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>rchild<span style="color: #308080">)</span><span style="color: #406080">;</span>
+    <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">%d</span><span style="color: #800000">"</span><span style="color: #308080">,</span>temp<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">)</span><span style="color: #406080">;</span>
+    <span style="color: #406080">}</span>
+<span style="color: #406080">}</span></pre>
+[468x15]
+<hr>
+<strong>Output :</strong>
+<pre style="color: #000020;background: #f6f8ff">Program For Binary Search Tree
+<span style="color: #008000">1.</span>Create
+<span style="color: #008000">2.</span>Search
+<span style="color: #008000">3.</span>Recursive Traversals
+<span style="color: #008000">4.</span>Exit
+Enter your choice <span style="color: #406080">:</span><span style="color: #008c00">1</span>
+
+Enter The Element <span style="color: #008c00">5</span>
+
+Do u Want To enter More Elements<span style="color: #406080">?</span><span style="color: #308080">(</span>y<span style="color: #308080">/</span>n<span style="color: #308080">)</span>
+Enter The Element <span style="color: #008c00">12</span>
+
+Do u Want To enter More Elements<span style="color: #406080">?</span><span style="color: #308080">(</span>y<span style="color: #308080">/</span>n<span style="color: #308080">)</span>
+Enter The Element <span style="color: #008c00">6</span>
+
+Do u Want To enter More Elements<span style="color: #406080">?</span><span style="color: #308080">(</span>y<span style="color: #308080">/</span>n<span style="color: #308080">)</span>
+Enter The Element <span style="color: #008c00">3</span>
+
+Do u Want To enter More Elements<span style="color: #406080">?</span><span style="color: #308080">(</span>y<span style="color: #308080">/</span>n<span style="color: #308080">)</span>
+<span style="color: #008000">1.</span>Create
+<span style="color: #008000">2.</span>Search
+<span style="color: #008000">3.</span>Recursive Traversals
+<span style="color: #008000">4.</span>Exit
+Enter your choice <span style="color: #406080">:</span><span style="color: #008c00">3</span>
+
+The Inorder   display  <span style="color: #406080">:</span>   <span style="color: #008c00">3</span>  <span style="color: #008c00">5</span>  <span style="color: #008c00">6</span>  <span style="color: #008c00">12</span>
+The Preorder  display  <span style="color: #406080">:</span>   <span style="color: #008c00">5</span>  <span style="color: #008c00">3</span>  <span style="color: #008c00">12</span>  <span style="color: #008c00">6</span>
+The Postorder display  <span style="color: #406080">:</span>   <span style="color: #008c00">3</span>  <span style="color: #008c00">6</span>  <span style="color: #008c00">12</span>  <span style="color: #008c00">5</span>
+
+<span style="color: #008000">1.</span>Create
+<span style="color: #008000">2.</span>Search
+<span style="color: #008000">3.</span>Recursive Traversals
+<span style="color: #008000">4.</span>Exit
+Enter your choice <span style="color: #406080">:</span><span style="color: #008c00">2</span>
+
+Enter Element to be searched <span style="color: #406080">:</span><span style="color: #008c00">3</span>
+
+The <span style="color: #008c00">20</span> Element is Present
+Parent of node <span style="color: #008c00">3</span> is <span style="color: #008c00">5</span></pre>
+<h2>Explanation of Program :</h2>
+<h3>Creating Tree :</h3>
+<pre style="color: #000020;background: #f6f8ff"><span style="color: #200080;font-weight: bold">case </span><span style="color: #008c00">1</span><span style="color: #e34adc">:</span>
+           <span style="color: #200080;font-weight: bold">do</span>
+             <span style="color: #406080">{</span>
+             new_node<span style="color: #308080">=</span>get_node<span style="color: #308080">(</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">Enter The Element </span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+             <span style="color: #003060">scanf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">%d</span><span style="color: #800000">"</span><span style="color: #308080">,</span><span style="color: #308080">&amp;</span>new_node<span style="color: #308080">-</span><span style="color: #308080">&gt;</span>data<span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>root<span style="color: #308080">=</span><span style="color: #308080">=</span><span style="color: #7d0045">NULL</span><span style="color: #308080">)</span>   <span style="color: #595979">/* Tree is not Created */</span>
+                 root<span style="color: #308080">=</span>new_node<span style="color: #406080">;</span>
+             <span style="color: #200080;font-weight: bold">else</span>
+                 insert<span style="color: #308080">(</span>root<span style="color: #308080">,</span>new_node<span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #003060">printf</span><span style="color: #308080">(</span><span style="color: #800000">"</span><span style="color: #0f69ff">n</span><span style="color: #1060b6">Want To enter More Elements?(y/n)</span><span style="color: #800000">"</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+             ans<span style="color: #308080">=</span>getch<span style="color: #308080">(</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #406080">}</span><span style="color: #200080;font-weight: bold">while</span><span style="color: #308080">(</span>ans<span style="color: #308080">=</span><span style="color: #308080">=</span><span style="color: #1060b6">'y'</span><span style="color: #308080">)</span><span style="color: #406080">;</span>
+
+             <span style="color: #200080;font-weight: bold">break</span><span style="color: #406080">;</span></pre>
+<p><strong>Explanation :</strong></p>
+<ul>
+<li><span style="text-decoration: underline"><strong>get_node()</strong></span> function will <span style="text-decoration: underline"><strong>allocate memory dynamically</strong></span> and allocate one node.</li>
+<li>if below condition is satisfied then we can say that we are going to create first node of the tree. <span style="text-decoration: underline"><strong>(i.e Tree is empty and this created node is very first node</strong></span>)</li>
+</ul>
+<pre style="color: #000020;background: #f6f8ff"><span style="color: #200080;font-weight: bold">if</span><span style="color: #308080">(</span>root <span style="color: #308080">=</span><span style="color: #308080">=</span> <span style="color: #7d0045">NULL</span><span style="color: #308080">)</span></pre>
+<ul>
+<li>If condition does not satisfied then we can say that we have already node in a tree. (<span style="text-decoration: underline"><strong>i.e this node which we have created is not a first node</strong></span>)</li>
+</ul>
+<h3>Display Tree</h3>
+<p>To display tree we have 3 traversal Techniques -</p>
+<ol>
+<li>In-Order Traversal</li>
+<li>Pre-Order Traversal</li>
+<li>Post-Order Traversal</li>
+</ol>
+<p><strong>Algorithm for Preorder Traversal of Binary Search Tree :</strong></p>
+<pre style="color: #000020;background: #f6f8ff">preorder<span style="color: #308080">(</span>node<span style="color: #308080">)</span>
+  <span style="color: #406080">{</span>
+  <span style="color: #200080;font-weight: bold">if</span> node <span style="color: #308080">=</span> null
+   then
+     <span style="color: #200080;font-weight: bold">return</span>
+  <span style="color: #200080;font-weight: bold">else</span>
+     print Node Data
+     Go to Left Child of node
+     Go to Right Child of node
+  <span style="color: #406080">}</span></pre>
+<p>Similarly Post order and inorder traversal works.</p>
+<h2>Summary of Traversal of BST :</h2>
+<table border="1">
+<tbody>
+<tr>
+<th>Traversal Type</th>
+<th>Inorder</th>
+<th>Preorder</th>
+<th>Postorder</th>
+</tr>
+<tr>
+<th>Short Cut</th>
+<td>L V R</td>
+<td>V L R</td>
+<td>L R V</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+<div id="cbprotect">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-8564525228188727";
+/* Programming : After */
+google_ad_slot = "1530044857";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+		
+				
+				
+	</div>
+	<!-- /.post-content -->
+	
+    </article>
+
+
+<!-- /.post -->
+		
+									
+						
+					<!-- post-nav -->
+	<div class="post-nav clearfix"> 
+					</div>
+	<!-- /post-nav -->
+		
+				<!-- comments -->
+								<!-- /comments -->
+				
+                				
+			</div>
+			<!--/content -->
+            				<!-- sidebar-narrow -->
+				<aside id="sidebar-alt">
+	
+	<div class="widgetwrap"><div id="themify-list-categories-2" class="widget list-categories"><h4 class="widgettitle">Categories</h4><ul class="categories-list">	<li class="cat-item cat-item-2"><a href="http://c4learn.com/c-programs/category/1-d-array-programs" title="View all posts filed under 1-D Array Programs">1-D Array Programs</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://c4learn.com/c-programs/category/algorithms" title="View all posts filed under Algorithms">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://c4learn.com/c-programs/category/area-programs" title="View all posts filed under Area Programs">Area Programs</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://c4learn.com/c-programs/category/command-line-programs" title="View all posts filed under Command Line Programs">Command Line Programs</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://c4learn.com/c-programs/category/conversion-programs" title="View all posts filed under Conversion Programs">Conversion Programs</a>
+</li>
+	<li class="cat-item cat-item-52"><a href="http://c4learn.com/c-programs/category/distributed-system" title="View all posts filed under Distributed System">Distributed System</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://c4learn.com/c-programs/category/dos-programs" title="View all posts filed under DOS Programs">DOS Programs</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://c4learn.com/c-programs/category/electrical-programs" title="View all posts filed under Electrical Programs">Electrical Programs</a>
+</li>
+	<li class="cat-item cat-item-54"><a href="http://c4learn.com/c-programs/category/file-programs" title="View all posts filed under File Programs">File Programs</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="http://c4learn.com/c-programs/category/general-programs" title="View all posts filed under General Programs">General Programs</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://c4learn.com/c-programs/category/graphics-programs" title="View all posts filed under Graphics Programs">Graphics Programs</a>
+</li>
+	<li class="cat-item cat-item-61"><a href="http://c4learn.com/c-programs/category/kr-c-program" title="View all posts filed under K&amp;R C Program">K&amp;R C Program</a>
+</li>
+	<li class="cat-item cat-item-57"><a href="http://c4learn.com/c-programs/category/linked-list-programs" title="View all posts filed under Linked List Programs">Linked List Programs</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://c4learn.com/c-programs/category/maths-program" title="View all posts filed under Maths Program">Maths Program</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://c4learn.com/c-programs/category/matrix-programs" title="View all posts filed under Matrix Programs">Matrix Programs</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://c4learn.com/c-programs/category/number-programs" title="View all posts filed under Number Programs">Number Programs</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://c4learn.com/c-programs/category/pointer-programs" title="View all posts filed under Pointer Programs">Pointer Programs</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://c4learn.com/c-programs/category/pyramid-programs" title="View all posts filed under Pyramid Programs">Pyramid Programs</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://c4learn.com/c-programs/category/series-programs" title="View all posts filed under Series Programs">Series Programs</a>
+</li>
+	<li class="cat-item cat-item-56"><a href="http://c4learn.com/c-programs/category/sorting-programs" title="View all posts filed under Sorting Programs">Sorting Programs</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://c4learn.com/c-programs/category/stack-programs" title="View all posts filed under Stack Programs">Stack Programs</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://c4learn.com/c-programs/category/string-programs" title="View all posts filed under String Programs">String Programs</a>
+</li>
+	<li class="cat-item cat-item-55"><a href="http://c4learn.com/c-programs/category/structure-programs" title="View all posts filed under Structure Programs">Structure Programs</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://c4learn.com/c-programs/category/tree-programs" title="View all posts filed under Tree Programs">Tree Programs</a>
+</li>
+	<li class="cat-item cat-item-53"><a href="http://c4learn.com/c-programs/category/typical-programs" title="View all posts filed under Typical Programs">Typical Programs</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://c4learn.com/c-programs/category/uncategorized" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-58"><a href="http://c4learn.com/c-programs/category/union-programs" title="View all posts filed under Union Programs">Union Programs</a>
+</li>
+</ul></div></div>
+	</aside>
+				<!-- /sidebar-narrow -->
+			
+		</div>
+		<!-- /contentwrap -->
+
+
+<aside id="sidebar">
+	
+	<div class="widgetwrap"><div id="text-2" class="widget widget_text">			<div class="textwidget"><div id="cbprotect">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-8564525228188727";
+/* 300x250, created 6/27/10 */
+google_ad_slot = "9296899899";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+		</div></div>		<div class="widgetwrap"><div id="recent-posts-2" class="widget widget_recent_entries">		<h4 class="widgettitle">Recent Programs</h4>		<ul>
+					<li>
+				<a href="http://c4learn.com/c-programs/c-program-check-type-triangle.html">C Program to check the type of triangle</a>
+						</li>
+					<li>
+				<a href="http://c4learn.com/c-programs/c-program-temperature-conversion-celsius-fahrenheit.html">C Program for Temperature Conversion from Celsius to Fahrenheit.</a>
+						</li>
+					<li>
+				<a href="http://c4learn.com/c-programs/c-program-temperature-conversion-fahrenheit-celsius.html">C Program for Temperature Conversion from Fahrenheit to Celsius.</a>
+						</li>
+					<li>
+				<a href="http://c4learn.com/c-programs/c-program-for-changing-backslash-character-arguments.html">C Program for Changing Backslash Character Arguments</a>
+						</li>
+					<li>
+				<a href="http://c4learn.com/c-programs/c-program-to-run-the-hello-world-program-on-your-system.html">C Program to Run the “hello, world” program on your system.</a>
+						</li>
+				</ul>
+		</div></div>
+	<div class="clearfix">
+		<div class="secondary">
+				</div>
+		<div class="secondary last">
+				</div>
+	</div>
+	<div id="text-3" class="widget widget_text">			<div class="textwidget"><iframe src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/likebox.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:258px;" allowtransparency="true"></iframe>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script type="text/javascript" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/plusone.js" gapi_processed="true"></script>
+
+<!-- Place this tag where you want the badge to render. -->
+<div id="___plus_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 300px; height: 106px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 300px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 106px;" tabindex="0" vspace="0" width="100%" id="I0_1394086073108" name="I0_1394086073108" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/badge.html" data-gapiattached="true" title="+Badge"></iframe></div>
+
+<script id="_wauhua">var _wau = _wau || []; _wau.push(["small", "hv11wkim54hw", "hua"]);
+(function() {var s=document.createElement("script"); s.async=true;
+s.src="http://widgets.amung.us/small.js";
+document.getElementsByTagName("head")[0].appendChild(s);
+})();</script><div title="Click to see what&#39;s popular on this site!" style="position: relative; display: inline-block; background-image: url(data:image/gif;base64,R0lGODlhUAAXAMQAAM1iTdBuWMQ4MsdHOt+ch/js5+/Qw+vCs/Pe1dR6Y+OolNuQespVQ9eFbsAnLX9/fzAwL////zU1NQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAABQABcAAAX/ICSOZGmeaKqu7Bi9L3IcBWzfeK7vfI+LMAPAQXQEEBGJcslsOp/QqFQaAUYMAiIjMnAIDMmpeEweVyGRQtcxIByy7Fd5Ti+fIwTiABYoKsJ1gYJMd30OeIhDRoCDjXR3igAEEQAChgCMjppihUULL3CLm6OcQHlEEQ0JEX6ZpK9Ld2qofZRxrrCvd1dZrA4AlWC5w7FWEQgJRQ4JSMTOuzAFMzU+1dbX1i3a29zdJhIwSkk24OGAOOU56eJyYw8S73ax7bGE54y45fP1YvFzYXIy4btH6Mm4feKYPIi3kCE8eAuXRHRy8OA6duzQkUuYMSMghyAfhnzYpF1FKPjsNPEDyI8jyXchYSqB2ZBiPYs2W+rjyNIlOIkzX4oU6s9gwB4lN4ZzaW5pmIkxhUIs6uzRsBAAOw==); width: 80px; height: 15px; padding: 0px; margin: 0px; overflow: hidden; cursor: pointer; direction: ltr;"><div style="background-image: url(data:image/gif;base64,R0lGODlhUAAXAMQAAM1iTdBuWMQ4MsdHOt+ch/js5+/Qw+vCs/Pe1dR6Y+OolNuQespVQ9eFbsAnLX9/fzAwL////zU1NQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAABQABcAAAX/ICSOZGmeaKqu7Bi9L3IcBWzfeK7vfI+LMAPAQXQEEBGJcslsOp/QqFQaAUYMAiIjMnAIDMmpeEweVyGRQtcxIByy7Fd5Ti+fIwTiABYoKsJ1gYJMd30OeIhDRoCDjXR3igAEEQAChgCMjppihUULL3CLm6OcQHlEEQ0JEX6ZpK9Ld2qofZRxrrCvd1dZrA4AlWC5w7FWEQgJRQ4JSMTOuzAFMzU+1dbX1i3a29zdJhIwSkk24OGAOOU56eJyYw8S73ax7bGE54y45fP1YvFzYXIy4btH6Mm4feKYPIi3kCE8eAuXRHRy8OA6duzQkUuYMSMghyAfhnzYpF1FKPjsNPEDyI8jyXchYSqB2ZBiPYs2W+rjyNIlOIkzX4oU6s9gwB4lN4ZzaW5pmIkxhUIs6uzRsBAAOw==); background-attachment: scroll; position: absolute; width: 5px; height: 8px; top: 4px; left: 20px; line-height: 8px; overflow: hidden; padding: 0px; margin: 0px; background-position: -43px -15px; background-repeat: no-repeat no-repeat;"></div><div style="background-image: url(data:image/gif;base64,R0lGODlhUAAXAMQAAM1iTdBuWMQ4MsdHOt+ch/js5+/Qw+vCs/Pe1dR6Y+OolNuQespVQ9eFbsAnLX9/fzAwL////zU1NQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAABQABcAAAX/ICSOZGmeaKqu7Bi9L3IcBWzfeK7vfI+LMAPAQXQEEBGJcslsOp/QqFQaAUYMAiIjMnAIDMmpeEweVyGRQtcxIByy7Fd5Ti+fIwTiABYoKsJ1gYJMd30OeIhDRoCDjXR3igAEEQAChgCMjppihUULL3CLm6OcQHlEEQ0JEX6ZpK9Ld2qofZRxrrCvd1dZrA4AlWC5w7FWEQgJRQ4JSMTOuzAFMzU+1dbX1i3a29zdJhIwSkk24OGAOOU56eJyYw8S73ax7bGE54y45fP1YvFzYXIy4btH6Mm4feKYPIi3kCE8eAuXRHRy8OA6duzQkUuYMSMghyAfhnzYpF1FKPjsNPEDyI8jyXchYSqB2ZBiPYs2W+rjyNIlOIkzX4oU6s9gwB4lN4ZzaW5pmIkxhUIs6uzRsBAAOw==); background-attachment: scroll; position: absolute; width: 5px; height: 8px; top: 4px; left: 26px; line-height: 8px; overflow: hidden; padding: 0px; margin: 0px; background-position: -33px -15px; background-repeat: no-repeat no-repeat;"></div><div style="background-image: url(data:image/gif;base64,R0lGODlhUAAXAMQAAM1iTdBuWMQ4MsdHOt+ch/js5+/Qw+vCs/Pe1dR6Y+OolNuQespVQ9eFbsAnLX9/fzAwL////zU1NQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAABQABcAAAX/ICSOZGmeaKqu7Bi9L3IcBWzfeK7vfI+LMAPAQXQEEBGJcslsOp/QqFQaAUYMAiIjMnAIDMmpeEweVyGRQtcxIByy7Fd5Ti+fIwTiABYoKsJ1gYJMd30OeIhDRoCDjXR3igAEEQAChgCMjppihUULL3CLm6OcQHlEEQ0JEX6ZpK9Ld2qofZRxrrCvd1dZrA4AlWC5w7FWEQgJRQ4JSMTOuzAFMzU+1dbX1i3a29zdJhIwSkk24OGAOOU56eJyYw8S73ax7bGE54y45fP1YvFzYXIy4btH6Mm4feKYPIi3kCE8eAuXRHRy8OA6duzQkUuYMSMghyAfhnzYpF1FKPjsNPEDyI8jyXchYSqB2ZBiPYs2W+rjyNIlOIkzX4oU6s9gwB4lN4ZzaW5pmIkxhUIs6uzRsBAAOw==); background-attachment: scroll; position: absolute; width: 24px; height: 8px; top: 4px; left: 32px; line-height: 8px; overflow: hidden; padding: 0px; margin: 0px; background-position: -50px -15px; background-repeat: no-repeat no-repeat;"></div></div></div>
+		</div>
+	</aside>
+<!-- /#sidebar -->
+
+</div>
+<!-- layout-container -->
+	
+
+
+
+		</div>
+	<!-- /body -->
+		
+	<div id="footerwrap">
+    
+    			<footer id="footer" class="pagewidth clearfix">
+        	
+				
+	<div class="footer-widgets clearfix">
+
+								<div class="col3-1 first">
+							</div>
+								<div class="col3-1 ">
+							</div>
+								<div class="col3-1 ">
+							</div>
+		
+	</div>
+	<!-- /.footer-widgets -->
+
+	
+			<div class="footer-nav-wrap">
+				<p class="back-top"><a href="http://c4learn.com/c-programs/c-program-to-implement-binary-search-tree-traversal.html#header">↑</a></p>
+			
+							</div>
+			<!-- /footer-nav-wrap -->
+	
+			<div class="footer-text clearfix">
+				<div class="one">© 2009-2013 Programming Tutorials.
+</div>				<div class="two">The content is copyrighted to Pritesh Taral and may not be reproduced on other websites.</div>			</div>
+			<!-- /footer-text --> 
+
+					</footer>
+		<!-- /#footer --> 
+                
+	</div>
+	<!-- /#footerwrap -->
+	
+</div>
+<!-- /#pagewrap -->
+
+
+<!-- wp_footer -->
+
+
+<script type="text/javascript" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/hoverIntent.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var uberMenuSettings = {"speed":"300","trigger":"hoverIntent","orientation":"horizontal","transition":"slide","hoverInterval":"20","hoverTimeout":"400","removeConflicts":"on","autoAlign":"off","noconflict":"off","fullWidthSubs":"off","androidClick":"off","iOScloseButton":"on","loadGoogleMaps":"off","repositionOnLoad":"off"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/ubermenu.min.js"></script>
+<script type="text/javascript" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/themify.script.js"></script>
+
+
+
+<!-- Dynamic page generated in 1.269 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2014-02-15 05:50:20 -->
+
+<!-- Compression = gzip --><iframe name="oauth2relay372230270" id="oauth2relay372230270" src="./C Program to Implement Binary Search Tree Traversal - Basic C Programs   C Programming Examples_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

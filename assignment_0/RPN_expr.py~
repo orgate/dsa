@@ -1,0 +1,178 @@
+#############################################################################################################
+#																											#
+#	Title			:	Simple RPN expression evaluation (Reverse Polish Notation or Postfix notation)		#
+#	Author			:	Alfred Ajay Aureate R																#
+#	Roll No			:	EE10B052																			#
+#	Course			:	EE4371 - Data Structures and Algorithms												#
+#	Assignment No	:	1																					#
+#																											#
+#############################################################################################################
+
+
+import sys
+
+# Class used for stack related operations
+class stackclass:
+
+	# The actual stack used is initiated
+	# below
+
+	stack = []
+
+
+	# This function initializes the stack
+	# when class is initiated
+	# The syntax is in-built in Python
+
+	def __init__(self):
+		self.stack = []
+
+
+	# This function gives the length of the
+	# stack when length of class is called
+	# The syntax is in-built in Python
+
+	def __len__(self):
+		return len(self.stack)
+
+
+	# This function gets a particular item
+	# from the stack based on the index given
+	# The syntax is in-built in Python
+
+	def __getitem__(self,index):
+		return self.stack[index]
+
+
+	# This function pushes an element to the
+	# top or the end of stack
+
+	def stack_push(self,element):
+		self.stack.append(element)
+		return self.stack
+
+
+	# This function pops the top or the last
+	# element from the stack
+
+	def stack_pop(self):	
+		self.stack.pop()
+		return self.stack
+
+
+# This function checks whether the given string
+# could be converted to a floating point number
+# or not
+
+def float_check(value):
+		try:
+			float(value)
+			return True
+		except ValueError:
+			return False
+
+
+# This loop reads every line, from a given text
+# file till the last line
+
+for expr in sys.stdin.readlines():
+
+
+	# This parses a line removing all spaces
+	# and stores the whole set of symbols or
+	# numbers belonging to a line
+
+	stck_list = expr.split()
+
+
+	# This declares the stack class
+
+	stck = stackclass()
+	k=0
+
+
+	# This loop runs for all the parsed symbols
+	# or numbers stored in stck_list until all
+	# of them are read or until it finds an error
+
+	while k<len(stck_list):
+		temp = 0
+
+
+		# If the parsed string could be converted
+		# to a float value, then that converted
+		# float value is stored into the stack
+
+		if float_check(stck_list[k]):
+			stck.stack_push(float(stck_list[k]))
+
+
+		# Otherwise, it checks if the parsed
+		# string is an operator, provided the
+		# stack has more than two elements. If
+		# so, then the operation is done. If not,
+		# then the stack is updated with an error
+		# message - "ERROR"
+
+		elif len(stck)>=2:
+			if stck_list[k]=='+':
+				temp = stck[-2] + stck[-1]
+			elif stck_list[k]=='-':
+				temp = stck[-2] - stck[-1]
+			elif stck_list[k]=='*':
+				temp = stck[-2] * stck[-1]
+			elif (stck_list[k]=='/') & (stck[-1]!=0):
+				temp = stck[-2] / stck[-1]
+			else:
+
+				# This means, that this string is
+				# not parseable or it has characters
+				# that are not permitted. So, it
+				# immediately breaks from the loop
+				# and outputs error message
+
+				stck = ["ERROR"]
+				break
+			
+
+			# The following lines pop the last two
+			# elements of the stack and updates it
+			# with the operated result
+
+			stck.stack_pop()
+			stck.stack_pop()
+			stck.stack_push(temp)
+
+
+		else:
+
+			# This error means that we have less
+			# than two elements in the stack for
+			# binary operation
+
+			stck = ["ERROR"]
+			break
+		k+=1
+
+
+	# This is to make sure if there is nothing in
+	# the line or expression, then it outputs
+	# nothing, instead of error message
+
+	if stck==[]:
+		print ""
+
+
+	# This line prints error either if the stack
+	# had already been flagged error or if the
+	# stack still has more than one element
+
+	elif (len(stck)!=1)|(stck==["ERROR"]):
+		print "ERROR"
+
+
+	# This line prints the required result
+
+	else:
+		print ("%.4f" %stck[0])
+	j+=1

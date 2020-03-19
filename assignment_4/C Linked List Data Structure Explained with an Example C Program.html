@@ -1,0 +1,1420 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0058)http://www.thegeekstuff.com/2012/08/c-linked-list-example/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>C Linked List Data Structure Explained with an Example C Program</title>
+<meta name="robots" content="noodp, noydir">
+<link rel="stylesheet" href="./C Linked List Data Structure Explained with an Example C Program_files/style.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="./C Linked List Data Structure Explained with an Example C Program_files/layout.css" type="text/css" media="screen, projection">
+<!--[if lte IE 8]><link rel="stylesheet" href="http://static.thegeekstuff.com/wp-content/themes/thesis_18/lib/css/ie.css?122710-193752" type="text/css" media="screen, projection" /><![endif]-->
+<link rel="stylesheet" href="./C Linked List Data Structure Explained with an Example C Program_files/custom.css" type="text/css" media="screen, projection">
+<link rel="canonical" href="./C Linked List Data Structure Explained with an Example C Program_files/C Linked List Data Structure Explained with an Example C Program.html">
+<link rel="alternate" type="application/rss+xml" title="The Geek Stuff RSS Feed" href="http://feedproxy.google.com/TheGeekStuff">
+<link rel="pingback" href="http://www.thegeekstuff.com/xmlrpc.php">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.thegeekstuff.com/xmlrpc.php?rsd">
+<link href="http://static.thegeekstuff.com/favicon.ico" rel="icon" type="image/x-icon">
+<link rel="author" href="https://plus.google.com/112493711428194838421/posts">
+<link rel="alternate" type="application/rss+xml" title="The Geek Stuff » C Linked List Data Structure Explained with an Example C Program Comments Feed" href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/feed/">
+
+<!-- All in One SEO Pack 2.1 by Michael Torbert of Semper Fi Web Design[277,348] -->
+<meta name="description" content="Linked list is one of the fundamental data structures in C. Knowledge of linked lists is must for C programmers. This article explains the fundamentals of C">
+
+<link rel="canonical" href="./C Linked List Data Structure Explained with an Example C Program_files/C Linked List Data Structure Explained with an Example C Program.html">
+<!-- /all in one seo pack -->
+<style type="text/css"></style><script type="text/javascript" async="" src="./C Linked List Data Structure Explained with an Example C Program_files/ga.js"></script><script src="./C Linked List Data Structure Explained with an Example C Program_files/cb=gapi.loaded_1" async=""></script><script src="./C Linked List Data Structure Explained with an Example C Program_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" src="./C Linked List Data Structure Explained with an Example C Program_files/saved_resource"></script><link type="text/css" href="./C Linked List Data Structure Explained with an Example C Program_files/inputtools.css" rel="stylesheet"><script type="text/javascript" src="./C Linked List Data Structure Explained with an Example C Program_files/inputtools.js"></script></head>
+<body class="custom" data-twttr-rendered="true">
+<div id="container">
+<div id="page">
+	<div id="header">
+<p id="logo"><a href="http://www.thegeekstuff.com/"><img src="./C Linked List Data Structure Explained with an Example C Program_files/thegeekstuff.gif" alt="The Geek Stuff"></a></p><div id="header_ad"><div id="header_ad1">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-8090601437064582";
+/* TGS Logo Header Big Image Only */
+google_ad_slot = "4708993701";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+	</div>
+<ul class="menu">
+<li class="tab tab-home"><a href="http://www.thegeekstuff.com/">Home</a></li>
+<li class="tab tab-1"><a href="http://www.thegeekstuff.com/linux-101-hacks-ebook/" title="Linux 101 Hacks eBook, by Ramesh Natarajan">Free eBook</a></li>
+<li class="tab tab-2"><a href="http://www.thegeekstuff.com/best-of-the-blog/" title="">Start Here</a></li>
+<li class="tab tab-3"><a href="http://www.thegeekstuff.com/contact/" title="Contact">Contact</a></li>
+<li class="tab tab-4"><a href="http://www.thegeekstuff.com/about/" title="">About</a></li>
+</ul>
+	<div id="content_box">
+		<div id="content" class="hfeed">
+
+			<div class="post-11266 post type-post status-publish format-standard hentry category-c-programming tag-c-link-list tag-c-linked-list-class tag-c-single-linked-list tag-c-singly-linked-list tag-single-linked-list post_box top" id="post-11266">
+				<div class="headline_area">
+					<h1 class="entry-title">C Linked List Data Structure Explained with an Example C Program</h1>
+					<p class="headline_meta">by <span class="author vcard fn">Himanshu Arora</span> on <abbr class="published" title="2012-08-24">August 24, 2012</abbr></p>
+				</div>
+				<div class="format_text entry-content">
+<div style="margin:7px 0px 6px 0px; padding:5px;"> 
+
+<div style="float:left; width=95px">
+<div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1394086251914" name="I0_1394086251914" src="./C Linked List Data Structure Explained with an Example C Program_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div>
+</div>
+
+<div style="float:left; padding:2px; width:90px"><iframe src="./C Linked List Data Structure Explained with an Example C Program_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowtransparency="true"></iframe>
+</div>
+
+<div style="width=95px">
+<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./C Linked List Data Structure Explained with an Example C Program_files/tweet_button.1393899192.html" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px;"></iframe><script type="text/javascript" src="./C Linked List Data Structure Explained with an Example C Program_files/widgets.js"></script>
+</div>
+
+</div>
+<p>Linked list is one of the fundamental data structures in C. </p>
+<p>Knowledge of linked lists is must for C programmers. This article explains the fundamentals of C linked list with an example C program.<br>
+<span id="more-11266"></span><br>
+Linked list is a dynamic data structure whose length can be increased or decreased at run time.</p>
+<p>How Linked lists are different from arrays? Consider the following points :</p>
+<ul>
+<li>An array is a static data structure. This means the length of array cannot be altered at run time. While, a linked list is a dynamic data structure.</li>
+<li>In an array, all the elements are kept at consecutive memory locations while in a linked list the elements (or nodes) may be kept at any location but still connected to each other.</li>
+</ul>
+<p>When to prefer linked lists over arrays? Linked lists are preferred mostly when you don’t know the volume of data to be stored. For example, In an employee management system, one cannot use arrays as they are of fixed length while any number of new employees can join. In scenarios like these, linked lists (or other dynamic data structures) are used as their capacity can be increased (or decreased) at run time (as an when required).</p>
+<h3>How linked lists are arranged in memory?</h3>
+<p>Linked list basically consists of memory blocks that are located at random memory locations. Now, one would ask how are they connected or how they can be traversed? Well, they are connected through pointers. Usually a block in a linked list is represented through a structure like this :</p>
+<pre>struct test_struct
+{
+    int val;
+    struct test_struct *next;
+};</pre>
+<p>So as you can see here, this structure contains a value ‘val’ and a pointer to a structure of same type. The value ‘val’ can be any value (depending upon the data that the linked list is holding) while the pointer ‘next’ contains the address of next block of this linked list. So linked list traversal is made possible through these ‘next’ pointers that contain address of the next node. The ‘next’ pointer of the last node (or for a single node linked list) would contain a NULL.</p>
+<h3>How a node is created?</h3>
+<p>A node is created by allocating memory to a structure (as shown in above point) in the following way :</p>
+    <center>
+      <div style="margin-left:2px; margin-top:10px; margin-bottom:10px; ">
+
+        <!-- AD BLOCK -->
+		
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-8090601437064582";
+/* TGS SinglePost Bottom Medium Rect */
+google_ad_slot = "8643685131";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+        <!-- END AD BLOCK -->
+
+	  </div>
+    </center>
+
+
+<pre>struct test_struct *ptr = (struct test_struct*)malloc(sizeof(struct test_struct));</pre>
+<p>So, as we can see above, the pointer ‘ptr’ now contains address of a newly created node. If the linked list is empty and first node is created then it is also known as head node.</p>
+<p>Once a node is created, then it can be assigned the value (that it is created to hold) and its next pointer is assigned the address of next node. If no next node exists (or if its the last node) then as already discussed, a NULL is assigned. This can be done in following way :</p>
+<pre>...
+...
+ptr-&gt;val = val;
+ptr-&gt;next = NULL;
+...
+...</pre>
+<h3>How to search a node in a linked list?</h3>
+<p>Searching a node means finding the node that contains the value being searched. This is in fact a very simple task if we talk about linear search (Note that there can be many search algorithms). One just needs to start with the first node and then compare the value which is being searched with the value contained in this node. If the value does not match then through the ‘next’ pointer (which contains the address of next node) the next node is accessed and same value comparison is done there. The search goes on until last node is accessed or node is found whose value is equal to the value being searched. A code snippet for this may look like :</p>
+<pre>...
+...
+...
+    while(ptr != NULL)
+    {
+        if(ptr-&gt;val == val)
+        {
+            found = true;
+            break;
+        }
+        else
+        {
+            ptr = ptr-&gt;next;
+        }
+    }
+...
+...
+...</pre>
+<h3>How a node is deleted?</h3>
+<p>A node is deleted by first finding it in the linked list and then calling free() on the pointer containing its address. If the deleted node is any node other than the first and last node then the ‘next’ pointer of the node previous to the deleted node needs to be pointed to the address of the node that is just after the deleted node. Its just like if a person breaks away from a human chain then the two persons (between whom the person was) needs to join hand together to maintain the chain.</p>
+<h3>A Practical C Linked List Example</h3>
+<p>Here is a practical example that creates a linked list, adds some nodes to it, searches and deletes nodes from it.</p>
+<pre>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;stdbool.h&gt;
+
+struct test_struct
+{
+    int val;
+    struct test_struct *next;
+};
+
+struct test_struct *head = NULL;
+struct test_struct *curr = NULL;
+
+struct test_struct* create_list(int val)
+{
+    printf("\n creating list with headnode as [%d]\n",val);
+    struct test_struct *ptr = (struct test_struct*)malloc(sizeof(struct test_struct));
+    if(NULL == ptr)
+    {
+        printf("\n Node creation failed \n");
+        return NULL;
+    }
+    ptr-&gt;val = val;
+    ptr-&gt;next = NULL;
+
+    head = curr = ptr;
+    return ptr;
+}
+
+struct test_struct* add_to_list(int val, bool add_to_end)
+{
+    if(NULL == head)
+    {
+        return (create_list(val));
+    }
+
+    if(add_to_end)
+        printf("\n Adding node to end of list with value [%d]\n",val);
+    else
+        printf("\n Adding node to beginning of list with value [%d]\n",val);
+
+    struct test_struct *ptr = (struct test_struct*)malloc(sizeof(struct test_struct));
+    if(NULL == ptr)
+    {
+        printf("\n Node creation failed \n");
+        return NULL;
+    }
+    ptr-&gt;val = val;
+    ptr-&gt;next = NULL;
+
+    if(add_to_end)
+    {
+        curr-&gt;next = ptr;
+        curr = ptr;
+    }
+    else
+    {
+        ptr-&gt;next = head;
+        head = ptr;
+    }
+    return ptr;
+}
+
+struct test_struct* search_in_list(int val, struct test_struct **prev)
+{
+    struct test_struct *ptr = head;
+    struct test_struct *tmp = NULL;
+    bool found = false;
+
+    printf("\n Searching the list for value [%d] \n",val);
+
+    while(ptr != NULL)
+    {
+        if(ptr-&gt;val == val)
+        {
+            found = true;
+            break;
+        }
+        else
+        {
+            tmp = ptr;
+            ptr = ptr-&gt;next;
+        }
+    }
+
+    if(true == found)
+    {
+        if(prev)
+            *prev = tmp;
+        return ptr;
+    }
+    else
+    {
+        return NULL;
+    }
+}
+
+int delete_from_list(int val)
+{
+    struct test_struct *prev = NULL;
+    struct test_struct *del = NULL;
+
+    printf("\n Deleting value [%d] from list\n",val);
+
+    del = search_in_list(val,&amp;prev);
+    if(del == NULL)
+    {
+        return -1;
+    }
+    else
+    {
+        if(prev != NULL)
+            prev-&gt;next = del-&gt;next;
+
+        if(del == curr)
+        {
+            curr = prev;
+        }
+        else if(del == head)
+        {
+            head = del-&gt;next;
+        }
+    }
+
+    free(del);
+    del = NULL;
+
+    return 0;
+}
+
+void print_list(void)
+{
+    struct test_struct *ptr = head;
+
+    printf("\n -------Printing list Start------- \n");
+    while(ptr != NULL)
+    {
+        printf("\n [%d] \n",ptr-&gt;val);
+        ptr = ptr-&gt;next;
+    }
+    printf("\n -------Printing list End------- \n");
+
+    return;
+}
+
+int main(void)
+{
+    int i = 0, ret = 0;
+    struct test_struct *ptr = NULL;
+
+    print_list();
+
+    for(i = 5; i&lt;10; i++)
+        add_to_list(i,true);
+
+    print_list();
+
+    for(i = 4; i&gt;0; i--)
+        add_to_list(i,false);
+
+    print_list();
+
+    for(i = 1; i&lt;10; i += 4)
+    {
+        ptr = search_in_list(i, NULL);
+        if(NULL == ptr)
+        {
+            printf("\n Search [val = %d] failed, no such element found\n",i);
+        }
+        else
+        {
+            printf("\n Search passed [val = %d]\n",ptr-&gt;val);
+        }
+
+        print_list();
+
+        ret = delete_from_list(i);
+        if(ret != 0)
+        {
+            printf("\n delete [val = %d] failed, no such element found\n",i);
+        }
+        else
+        {
+            printf("\n delete [val = %d]  passed \n",i);
+        }
+
+        print_list();
+    }
+
+    return 0;
+}</pre>
+<p>In the code above :</p>
+<ul>
+<li>The first node is always made accessible through a global ‘head’ pointer. This pointer is adjusted when first node is deleted.</li>
+<li>Similarly there is a ‘curr’ pointer that contains the last node in the list. This is also adjusted when last node is deleted.</li>
+<li>Whenever a node is added to linked list, it is always checked if the linked list is empty then add it as the first node.</li>
+</ul>
+<p>Also, as you see from the above Linked list example, it also uses pointers. If you are new to C programming, you should understand the <a href="http://www.thegeekstuff.com/2011/12/c-pointers-fundamentals/">fundamentals of C pointers</a>.</p>
+<p>The output of the above code looks like :</p>
+<pre>$ ./ll
+
+ -------Printing list Start------- 
+
+ -------Printing list End------- 
+
+ creating list with headnode as [5]
+
+ Adding node to end of list with value [6]
+
+ Adding node to end of list with value [7]
+
+ Adding node to end of list with value [8]
+
+ Adding node to end of list with value [9]
+
+ -------Printing list Start------- 
+
+ [5] 
+
+ [6] 
+
+ [7] 
+
+ [8] 
+
+ [9] 
+
+ -------Printing list End------- 
+
+ Adding node to beginning of list with value [4]
+
+ Adding node to beginning of list with value [3]
+
+ Adding node to beginning of list with value [2]
+
+ Adding node to beginning of list with value [1]
+
+ -------Printing list Start------- 
+
+ [1] 
+
+ [2] 
+
+ [3] 
+
+ [4] 
+
+ [5] 
+
+ [6] 
+
+ [7] 
+
+ [8] 
+
+ [9] 
+
+ -------Printing list End------- 
+
+ Searching the list for value [1] 
+
+ Search passed [val = 1]
+
+ -------Printing list Start------- 
+
+ [1] 
+
+ [2] 
+
+ [3] 
+
+ [4] 
+
+ [5] 
+
+ [6] 
+
+ [7] 
+
+ [8] 
+
+ [9] 
+
+ -------Printing list End------- 
+
+ Deleting value [1] from list
+
+ Searching the list for value [1] 
+
+ delete [val = 1]  passed 
+
+ -------Printing list Start------- 
+
+ [2] 
+
+ [3] 
+
+ [4] 
+
+ [5] 
+
+ [6] 
+
+ [7] 
+
+ [8] 
+
+ [9] 
+
+ -------Printing list End------- 
+
+ Searching the list for value [5] 
+
+ Search passed [val = 5]
+
+ -------Printing list Start------- 
+
+ [2] 
+
+ [3] 
+
+ [4] 
+
+ [5] 
+
+ [6] 
+
+ [7] 
+
+ [8] 
+
+ [9] 
+
+ -------Printing list End------- 
+
+ Deleting value [5] from list
+
+ Searching the list for value [5] 
+
+ delete [val = 5]  passed 
+
+ -------Printing list Start------- 
+
+ [2] 
+
+ [3] 
+
+ [4] 
+
+ [6] 
+
+ [7] 
+
+ [8] 
+
+ [9] 
+
+ -------Printing list End------- 
+
+ Searching the list for value [9] 
+
+ Search passed [val = 9]
+
+ -------Printing list Start------- 
+
+ [2] 
+
+ [3] 
+
+ [4] 
+
+ [6] 
+
+ [7] 
+
+ [8] 
+
+ [9] 
+
+ -------Printing list End------- 
+
+ Deleting value [9] from list
+
+ Searching the list for value [9] 
+
+ delete [val = 9]  passed 
+
+ -------Printing list Start------- 
+
+ [2] 
+
+ [3] 
+
+ [4] 
+
+ [6] 
+
+ [7] 
+
+ [8] 
+
+ -------Printing list End-------</pre>
+<p>As you see from the above output, it does all the fundamental Linked list operations. It creates a linked list, adds some nodes to it, searches and deletes nodes from it.</p>
+<div style="margin:7px 0px 3px 0px; padding:5px; background:#F2F0E8">
+
+<div style="float:left; width=95px">
+<div id="___plusone_1" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I1_1394086251918" name="I1_1394086251918" src="./C Linked List Data Structure Explained with an Example C Program_files/fastbutton(1).html" data-gapiattached="true" title="+1"></iframe></div>
+</div>
+
+<div style="float:left; width=95px">
+<iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" src="./C Linked List Data Structure Explained with an Example C Program_files/tweet_button.1393899192(1).html" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px;"></iframe><script type="text/javascript" src="./C Linked List Data Structure Explained with an Example C Program_files/widgets.js"></script>
+</div>
+
+<div style="float:left; padding:2px; width:90px"><iframe src="./C Linked List Data Structure Explained with an Example C Program_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowtransparency="true"></iframe>
+</div>
+
+<div style="padding:1px">
+&gt;&nbsp;<a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#respond">Add your comment</a> 
+</div>
+
+</div>
+<br>
+<div id="subscribebox">
+<a rel="nofollow" href="http://www.thegeekstuff.com/linux-sysadmin"><img class="alignright" title="Linux Sysadmin Course" src="./C Linked List Data Structure Explained with an Example C Program_files/linux-sysadmin-200-166.png" alt="Linux Sysadmin Course"></a>
+Linux provides several powerful administrative tools and utilities which will help you to manage your systems effectively. If you don’t know what these tools are and how to use them, you could be spending lot of time trying to perform even the basic administrative tasks. The focus of this course is to help you understand system administration tools, which will help you to become an effective Linux system administrator.<br> Get the <a href="http://www.thegeekstuff.com/linux-sysadmin" class="button">Linux Sysadmin Course</a> Now!
+</div>
+<h3>If you enjoyed this article, you might also like..</h3>
+<table>
+<tbody><tr>
+<td valign="top">
+<ol>
+<li><a href="http://www.thegeekstuff.com/2010/12/50-unix-linux-sysadmin-tutorials/">50 Linux Sysadmin Tutorials</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/11/50-linux-commands/">50 Most Frequently Used Linux Commands (With Examples)</a></li>
+<li><a href="http://www.thegeekstuff.com/2011/12/linux-performance-monitoring-tools/">Top 25 Best Linux Performance Monitoring and Debugging Tools</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/">Mommy, I found it! – 15 Practical Linux Find Command Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/linux-101-hacks-ebook/">Linux 101 Hacks 2nd Edition eBook</a>&nbsp;<img title="Linux 101 Hacks Book" src="./C Linked List Data Structure Explained with an Example C Program_files/free-small.png" alt="Linux 101 Hacks Book"></li>
+</ol>
+</td>
+<td>
+<ul>
+<li><a href="http://www.thegeekstuff.com/2010/01/awk-introduction-tutorial-7-awk-print-examples/">Awk Introduction – 7 Awk Print Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/10/unix-sed-tutorial-advanced-sed-substitution-examples/">Advanced Sed Substitution Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/03/8-essential-vim-editor-navigation-fundamentals/">8 Essential Vim Editor Navigation Fundamentals</a></li>
+<li><a href="http://www.thegeekstuff.com/2011/06/iptables-rules-examples/">25 Most Frequently Used Linux IPTables Rules Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2008/08/turbocharge-putty-with-12-powerful-add-ons-software-for-geeks-3/">Turbocharge PuTTY with 12 Powerful Add-Ons</a></li>
+</ul>
+</td>
+</tr>
+</tbody></table>
+<br>
+<center> 
+<table border="0" cellspacing="10"> 
+<tbody><tr> 
+<td> 
+<a rel="nofollow" href="http://www.thegeekstuff.com/bash-101-hacks-ebook/"><img title="Bash 101 Hacks Book" src="./C Linked List Data Structure Explained with an Example C Program_files/bash-132.png" alt="Bash 101 Hacks Book"></a> 
+</td> 
+<td> 
+<a rel="nofollow" href="http://www.thegeekstuff.com/sed-awk-101-hacks-ebook/"><img title="Sed and Awk 101 Hacks Book" src="./C Linked List Data Structure Explained with an Example C Program_files/sed-and-awk-132.png" alt="Sed and Awk 101 Hacks Book"></a> 
+</td> 
+<td> 
+<a rel="nofollow" href="http://www.thegeekstuff.com/nagios-core-ebook/"><img title="Nagios Core 3 Book" src="./C Linked List Data Structure Explained with an Example C Program_files/nagios-core-132.png" alt="Nagios Core 3 Book"></a> 
+</td> 
+<td> 
+<a rel="nofollow" href="http://www.thegeekstuff.com/vim-101-hacks-ebook/"><img title="Vim 101 Hacks Book" src="./C Linked List Data Structure Explained with an Example C Program_files/vim-101-hacks-132.png" alt="Vim 101 Hacks Book"></a> 
+</td> 
+</tr> 
+</tbody></table> 
+</center>
+<br>
+<div id="tgs-tags">
+Tags: <a href="http://www.thegeekstuff.com/tag/c-link-list/" rel="tag">C Link List</a>, <a href="http://www.thegeekstuff.com/tag/c-linked-list-class/" rel="tag">C Linked List Class</a>, <a href="http://www.thegeekstuff.com/tag/c-single-linked-list/" rel="tag">C Single Linked List</a>, <a href="http://www.thegeekstuff.com/tag/c-singly-linked-list/" rel="tag">C Singly Linked List</a>, <a href="http://www.thegeekstuff.com/tag/single-linked-list/" rel="tag">Single Linked List</a></div>
+				</div>
+			</div>
+
+			<div id="comments">
+				<div id="comments_intro" class="comments_intro">
+					<p><span class="bracket">{</span> <span>39</span> comments… read them below or <a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#respond" rel="nofollow">add one</a> <span class="bracket">}</span></p>
+				</div>
+
+				<dl id="comment_list">
+					<dt class="comment even thread-even depth-1" id="comment-290223">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-290223" title="Permalink to this comment" rel="nofollow">1</a></span>
+<span class="comment_author">Mitra Kaseebhotla</span>
+<span class="comment_time">August 24, 2012 at 10:37 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-290223">
+<p>Very good article. Reminded my college days.:)</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-290286">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-290286" title="Permalink to this comment" rel="nofollow">2</a></span>
+<span class="comment_author">TommyZee</span>
+<span class="comment_time">August 24, 2012 at 1:49 pm</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-290286">
+<p>The good old days <img src="./C Linked List Data Structure Explained with an Example C Program_files/icon_sad.gif" alt=":(" class="wp-smiley"> </p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-290410">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-290410" title="Permalink to this comment" rel="nofollow">3</a></span>
+<span class="comment_author">Jalal Hajigholamali</span>
+<span class="comment_time">August 24, 2012 at 8:24 pm</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-290410">
+<p>Hi,<br>
+Very good article. I sent it to my students..</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-290620">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-290620" title="Permalink to this comment" rel="nofollow">4</a></span>
+<span class="comment_author">Sander</span>
+<span class="comment_time">August 25, 2012 at 5:44 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-290620">
+<p>Yours is one of the best site to learn *nix/Dev related things!<br>
+ You should review the organization tough, this way it would be easier to access the articles of a specific subject.</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-293101">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-293101" title="Permalink to this comment" rel="nofollow">5</a></span>
+<span class="comment_author">Chris</span>
+<span class="comment_time">August 30, 2012 at 1:26 pm</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-293101">
+<p>Found your site a few weeks back, this article came in handy.  I am working on learning C by way of implementing things I know in Java.  I just finished my third level Data Structures and Algorithm course.</p>
+<p>Thanks for all the great articles!</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-293553">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-293553" title="Permalink to this comment" rel="nofollow">6</a></span>
+<span class="comment_author">dusKO|2scica</span>
+<span class="comment_time">August 31, 2012 at 11:45 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-293553">
+<p>Ok but are there people who still use aloc, maloc i realoc </p>
+<p>new and delete do it for me….</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-369518">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-369518" title="Permalink to this comment" rel="nofollow">7</a></span>
+<span class="comment_author">C Dev</span>
+<span class="comment_time">November 7, 2012 at 4:22 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-369518">
+<p>You cannot use new and delete in C program. So Malloc and free are required for dynamic memory allocation and release</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-373624">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-373624" title="Permalink to this comment" rel="nofollow">8</a></span>
+<span class="comment_author">Dusko Koscica</span>
+<span class="comment_time">November 10, 2012 at 5:46 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-373624">
+<p>It is good for programer to learn new ways of C++, I don’t say that you should skip the list but there area better ways in C++.<br>
+First of all you can create the array with new operator, after you establish the size in memory, for example you can convert the number to binary with stack, and it is very good thing. In some ocasions you can use the vectors, the vector is faster then list and it is a question when to use list or the array.<br>
+This expanation might do you more damage than good, even it is true, because when people switch to C++ they keep their old habits, that is the problem, in this disc. Vell we can’t change people, people are what they are… and democratic way sometimes sacks at this, O no I am not saing that it is ok or only way to be comunist it is time to ocupy C++ and C   </p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-379780">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-379780" title="Permalink to this comment" rel="nofollow">9</a></span>
+<span class="comment_author">Amar</span>
+<span class="comment_time">November 14, 2012 at 8:08 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-379780">
+<p>wat would be the op if we just print ptr??</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-381190">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-381190" title="Permalink to this comment" rel="nofollow">10</a></span>
+<span class="comment_author">Dusko Kosciac</span>
+<span class="comment_time">November 15, 2012 at 7:39 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-381190">
+<p>int *ptrInt = new int[100];  </p>
+<p>How would you comment this one, Yes it is possible to do it in C, with other comanda</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-382511">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-382511" title="Permalink to this comment" rel="nofollow">11</a></span>
+<span class="comment_author">Anonymous</span>
+<span class="comment_time">November 16, 2012 at 4:31 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-382511">
+<p>@Dusko I’ve checked changes introduced by C11 last standardized C revision and didn’t see any new operator. Please stop confusing C and C++.</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-384015">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-384015" title="Permalink to this comment" rel="nofollow">12</a></span>
+<span class="comment_author">duskokoscica</span>
+<span class="comment_time">November 17, 2012 at 3:23 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-384015">
+<p>oK yOU MIisteR anoNymous is this enough C for YOu and others<br>
+double *niz = malloc(vel*sizeof(double));</p>
+<p>I would like to hear Your coment on thIsone …</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-387675">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-387675" title="Permalink to this comment" rel="nofollow">13</a></span>
+<span class="comment_author">duskoKoscica</span>
+<span class="comment_time">November 19, 2012 at 11:19 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-387675">
+<p>Well, I see, try this code:<br>
+int *n = (int *) malloc(sizeof(int));</p>
+<p>The problem for me is this statement:”An array is a static data structure. This means the length of array cannot be altered at run time”.</p>
+<p>If you ask the person how manny members of array, or you are able to estimate the size of the array, this can be used…</p>
+<p>And also, I hope that my discusion was the contribution to the toppic, it dos’t mean that the article is bad…</p>
+<p>Some thihs have changed, and the bigger problem for me is the fact that people don’t accept the change that easy…. </p>
+<p>Ok</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-423615">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-423615" title="Permalink to this comment" rel="nofollow">14</a></span>
+<span class="comment_author">DuskoKoscica</span>
+<span class="comment_time">December 8, 2012 at 1:45 pm</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-423615">
+<p>Have I ever told YA about the realloc, pay per view on that one?</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-484534">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-484534" title="Permalink to this comment" rel="nofollow">15</a></span>
+<span class="comment_author">Pedro Rodrigues</span>
+<span class="comment_time">January 9, 2013 at 9:06 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-484534">
+<p>hello,<br>
+First of all, thanks for this post.<br>
+When i was trying your code i discovered that the delete function have one problem when the list have only one element that is on the same time the current and the head. When this happens, in your code, the pointer “head” will not be modified what can bring a wrong results.<br>
+Correct me if I’m wrong!</p>
+<p>Regards<br>
+Pedro Rodrigues</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-485973">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-485973" title="Permalink to this comment" rel="nofollow">16</a></span>
+<span class="comment_author">Mittal</span>
+<span class="comment_time">January 10, 2013 at 3:03 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-485973">
+<p>really nice n easy to understand… <img src="./C Linked List Data Structure Explained with an Example C Program_files/icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-512083">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-512083" title="Permalink to this comment" rel="nofollow">17</a></span>
+<span class="comment_author">elakkiya</span>
+<span class="comment_time">January 23, 2013 at 11:36 pm</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-512083">
+<p>Really good, exp also very easy</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-527474">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-527474" title="Permalink to this comment" rel="nofollow">18</a></span>
+<span class="comment_author">rahul waghmare</span>
+<span class="comment_time">February 2, 2013 at 2:21 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-527474">
+<p>linked list is very interesting part and easy to understand</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-629322">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-629322" title="Permalink to this comment" rel="nofollow">19</a></span>
+<span class="comment_author">iyappan</span>
+<span class="comment_time">April 5, 2013 at 2:00 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-629322">
+<p>explanation very good sir</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-640010">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-640010" title="Permalink to this comment" rel="nofollow">20</a></span>
+<span class="comment_author">stefan</span>
+<span class="comment_time">April 8, 2013 at 11:19 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-640010">
+<p>hi , can somebody here help me solve the following exercise in c programing ?<br>
+———<br>
+#Lab2 – Double chain lists and Text editing.<br>
+Introduction:  We want to stock and manipulate texts magnitude in memory.then<br>
+in will reprezantojme a text with a double chain list. Each node of the list will contain:<br>
+- A table of characters called date, with a magnitude N.<br>
+- an integer called the size that determines the number of elements to vendusur in the table.<br>
+- A pointer next to Pinto successor node.<br>
+- A pointer prev Pinto to preceding node.</p>
+<p>Part one</p>
+<p>1.Determine constant N avec un # define.<br>
+2.Determine node structure to maintain an element.<br>
+3.Schedule a text structure to store Text. The structure includes:<br>
+ .  A ponter called head to identify the first node.<br>
+ .  A ponter called tail to identify the last node.<br>
+ .  An integer count to identify the number of elements in the text.<br>
+ .  An integer size to identify the number of characters of text.</p>
+<p>Part two<br>
+1. Write a iter structure to maintain a cursor in a text (relative position) which<br>
+contains:<br>
+- A ponter ptr to identify Text node where the cursor.<br>
+ – an integer ICASA to identify relevant element to the table,<br>
+NULL ptr value indicates that the cursor is placed before the first element.</p>
+<p>Part three<br>
+Basis functions: Write the following functions.<br>
+2.node * create_node () creates and returns an empty node.<br>
+3.text * create_text () creates and returns an empty text.<br>
+4.void free_text (text * t) that frees the text t and the respective nodes that make up.<br>
+5.iter * create_iter_at_begin (text * t) that creates a cursor and positioning to<br>
+The first character of the Text.<br>
+6.void free_iter (iter * pos) that frees the cursor pos.<br>
+7.void move_forward_iter (iter * pos, int n), which moves the cursor n characters<br>
+  to the right.<br>
+8.void move_backward_iter (iter * pos, int n), which moves the cursor n characters<br>
+  left<br>
+Cursor movement functions should ensure that the cursor stays always between element<br>
+first and last.<br>
+9.void append_text (text * t, char * s) that adds a chain s character at the end of<br>
+texti. This fonksion should shrytezoje maximum length of vacancies occurring on the last node<br>
+Text t.<br>
+10.void push_text (text * t, char * s) that adds a chain s character at the beginning of<br>
+texti.<br>
+11.void show_text (text * t, iter * pos) that displays the Text t with an asterisk [*] in position<br>
+where the cursor pos. If pos-&gt; ptr is NULL, the star appears before the first character.<br>
+12.void insert_text (text * t, iter * pos, char * s) s after the chain adds<br>
+position pos. Besides further update to show the last character entered.<br>
+13.void delete_text (text * t, iter * pos, int n) removes n characters before pos.<br>
+In this case, but should again be set to update showing the last character that is not deleted..</p>
+<p>Main menu of the program:<br>
+Written functions will be used to write a program that will read a text file and<br>
+further will make the relevant manipulations. Menu should be implemented:</p>
+<p>Reading a file. Cursor is placed before the first element.<br>
+Display Text reading.<br>
+Move kursoni n characters right.<br>
+Move kursoni n characters left.<br>
+Delete n characters from the position where the cursor.<br>
+Enter a character chain starting from the cursor position.<br>
+Output from the program.</p>
+<p>advice:</p>
+<p>Organize project in Visual Studio where:<br>
+- File lab2.h, is the file header which decided the declarations of structures and functions.<br>
+- File lab2.c, which contains coded functions,<br>
+- File main.c source, that ^ contains the basic program.</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-665864">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-665864" title="Permalink to this comment" rel="nofollow">21</a></span>
+<span class="comment_author">MOBITI MAHENGE</span>
+<span class="comment_time">April 15, 2013 at 7:02 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-665864">
+<p>The article or explanations are very good, congratulation for that; my request is i need the knowledge like this with reference to C++ language…by Mobiti Mahenge</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-669078">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-669078" title="Permalink to this comment" rel="nofollow">22</a></span>
+<span class="comment_author">Hemanth</span>
+<span class="comment_time">April 16, 2013 at 1:09 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-669078">
+<p>Awesome Explanation, keep up the good work.</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-671081">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-671081" title="Permalink to this comment" rel="nofollow">23</a></span>
+<span class="comment_author">Ali</span>
+<span class="comment_time">April 16, 2013 at 7:07 pm</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-671081">
+<p>Thank you!! very handy!!</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-742726">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-742726" title="Permalink to this comment" rel="nofollow">24</a></span>
+<span class="comment_author">abhishek</span>
+<span class="comment_time">May 11, 2013 at 11:31 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-742726">
+<p>Its a better…. ND uses exam time</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-762077">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-762077" title="Permalink to this comment" rel="nofollow">25</a></span>
+<span class="comment_author">Frank</span>
+<span class="comment_time">May 26, 2013 at 12:02 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-762077">
+<p>I used to think that there is no boolean conditions in C ??? Is this correct or wrong?</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-819970">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-819970" title="Permalink to this comment" rel="nofollow">26</a></span>
+<span class="comment_author">saranya</span>
+<span class="comment_time">June 23, 2013 at 9:30 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-819970">
+<p>how to understand a logic in c???</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-825305">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-825305" title="Permalink to this comment" rel="nofollow">27</a></span>
+<span class="comment_author">LeBoepp</span>
+<span class="comment_time">June 27, 2013 at 4:56 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-825305">
+<p>@Pedro Rodrigues<br>
+You are right.<br>
+In function delete_from_list() you can change<br>
+        if(del == curr)<br>
+        {<br>
+            curr = prev;<br>
+        }<br>
+        else if(del == head)<br>
+        {<br>
+            head = del-&gt;next;<br>
+        }</p>
+<p>to</p>
+<p>        if(del == curr)<br>
+        {<br>
+            curr = prev;<br>
+        }</p>
+<p>        if(del == head)<br>
+        {<br>
+            head = del-&gt;next;<br>
+        }</p>
+<p>Remove the else and it works fine.</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-826436">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-826436" title="Permalink to this comment" rel="nofollow">28</a></span>
+<span class="comment_author">Rana</span>
+<span class="comment_time">June 28, 2013 at 2:13 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-826436">
+<p>Nice ,very effective article.thx so much</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-853046">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-853046" title="Permalink to this comment" rel="nofollow">29</a></span>
+<span class="comment_author">DHANUNJAYA REDDY</span>
+<span class="comment_time">July 22, 2013 at 9:05 pm</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-853046">
+<p>good example programs</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-856662">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-856662" title="Permalink to this comment" rel="nofollow">30</a></span>
+<span class="comment_author">pavithra</span>
+<span class="comment_time">July 25, 2013 at 10:39 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-856662">
+<p>i am doing my B.E.cse 2nd yr i am a biology student i dont  even the basics  of c   &amp;cannot understand the subject please give me sum suggestion to rectify it</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-884910">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-884910" title="Permalink to this comment" rel="nofollow">31</a></span>
+<span class="comment_author">BOOPATHI</span>
+<span class="comment_time">August 13, 2013 at 11:49 pm</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-884910">
+<p>i am also biology student please give some tips about pagination using circular linked list.</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-1004015">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-1004015" title="Permalink to this comment" rel="nofollow">32</a></span>
+<span class="comment_author">Anonymous</span>
+<span class="comment_time">October 29, 2013 at 1:46 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-1004015">
+<p>easily understandable thanks a lot</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-1082714">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-1082714" title="Permalink to this comment" rel="nofollow">33</a></span>
+<span class="comment_author">shraddha</span>
+<span class="comment_time">December 3, 2013 at 8:58 pm</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-1082714">
+<p>liked it very much…….</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-1114480">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-1114480" title="Permalink to this comment" rel="nofollow">34</a></span>
+<span class="comment_author">sutha merthi</span>
+<span class="comment_time">December 15, 2013 at 12:19 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-1114480">
+<p>nice well undestand sir</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-1174103">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-1174103" title="Permalink to this comment" rel="nofollow">35</a></span>
+<span class="comment_author">Ishan</span>
+<span class="comment_time">January 6, 2014 at 3:44 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-1174103">
+<p>i modified main() of this program and its not functioning the way i intended.<br>
+int main(void)<br>
+{<br>
+    int i = 0, ret = 0;</p>
+<p>    print_list();</p>
+<p>    for(i = 5; i&lt;10; i++)<br>
+        add_to_list(i,true);</p>
+<p>    print_list();</p>
+<p>    for(i = 5; i&lt;10; i++)<br>
+    {</p>
+<p>        ret = delete_from_list(i);<br>
+        if(ret != 0)<br>
+        {<br>
+            printf("\n delete [val = %d] failed, no such element found\n",i);<br>
+        }<br>
+        else<br>
+        {<br>
+            printf("\n delete [val = %d]  passed \n",i);<br>
+        }</p>
+<p>    }<br>
+	print_list();<br>
+    return 0;<br>
+}</p>
+<p>the output i am getting wrong is that although it every value gets deleted including [9] as it shows<br>
+delete [val=9] passed<br>
+but last print_list()<br>
+it is still printing<br>
+[9]</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-1218927">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-1218927" title="Permalink to this comment" rel="nofollow">36</a></span>
+<span class="comment_author">Madalina</span>
+<span class="comment_time">January 21, 2014 at 6:48 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-1218927">
+<p>Awesome explanation! Thank you very much!</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-1222714">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-1222714" title="Permalink to this comment" rel="nofollow">37</a></span>
+<span class="comment_author">Dimpal</span>
+<span class="comment_time">January 22, 2014 at 12:06 pm</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-1222714">
+<p>Excellent….:)</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-1244091">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-1244091" title="Permalink to this comment" rel="nofollow">38</a></span>
+<span class="comment_author">varun</span>
+<span class="comment_time">February 1, 2014 at 2:44 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-1244091">
+<p>Any one pls write the program to find exact middle node in a linked list with out going to last node????????????</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-1293588">
+<span class="avatar"></span>
+<span class="comment_num"><a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example/#comment-1293588" title="Permalink to this comment" rel="nofollow">39</a></span>
+<span class="comment_author">Prasad Upganlawar</span>
+<span class="comment_time">February 24, 2014 at 1:11 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-1293588">
+<p>Can we use link list on stack memory? Why?</p>
+</div>
+					</dd>
+				</dl>
+				<div id="respond">
+					<div id="respond_intro">
+						<p>Leave a Comment</p>
+					</div>
+					<form action="http://www.thegeekstuff.com/wp-comments-post.php" method="post" id="commentform">
+						<p><input class="text_input" type="text" name="author" id="author" value="" tabindex="1"><label for="author">Name</label></p>
+						<p><input class="text_input" type="text" name="email" id="email" value="" tabindex="2"><label for="email">E-mail</label></p>
+						<p><input class="text_input" type="text" name="url" id="url" value="" tabindex="3"><label for="url">Website</label></p>
+						<p class="comment_box">
+							<textarea name="comment" id="comment" tabindex="4" cols="40" rows="8"></textarea>
+						</p>
+
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;">
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+						<p class="remove_bottom_margin">
+							<input name="submit" class="form_submit" type="submit" id="submit" tabindex="5" value="Submit">
+<input type="hidden" name="comment_post_ID" value="11266" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="e4dc612a3e"></p>					</form>
+				</div>
+			</div>
+					<div class="prev_next post_nav">
+						<p class="previous">Previous post: <a href="http://www.thegeekstuff.com/2012/08/fsck-command-examples/" rel="prev">10 Linux Fsck Command Examples to Check and Repair Filesystem</a></p>
+						<p>Next post: <a href="http://www.thegeekstuff.com/2012/08/lsof-command-examples/" rel="next">15 Linux lsof Command Examples (Identify Open Files)</a></p>
+					</div>
+		</div>
+
+		<div id="sidebars">
+			<div id="sidebar_1" class="sidebar">
+				<ul class="sidebar_list">
+<li class="widget widget_text" id="text-21">			<div class="textwidget"><a title="Subscribe via RSS" href="http://www.thegeekstuff.com/feed" rel="nofollow">RSS</a>&nbsp; | &nbsp;<a title="Subscribe via Email" href="http://feedburner.google.com/fb/a/mailverify?uri=TheGeekStuff&loc=en_US" rel="nofollow">Email</a>&nbsp; | &nbsp;<a title="Follow us on Twitter" href="http://twitter.com/thegeekstuff" rel="nofollow">Twitter</a>&nbsp; | &nbsp;<a title="Become a fan" href="http://www.facebook.com/thegeekstuff" rel="nofollow">Facebook</a>&nbsp; | &nbsp;<a title="Follow us on Google+" href="https://plus.google.com/112493711428194838421/posts">Google+</a>
+<br><br>
+<form action="http://www.thegeekstuff.com/search" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="005666763606120661560:zkmegbt_djm">
+    <input type="hidden" name="cof" value="FORID:10">
+    <input type="hidden" name="ie" value="UTF-8">
+    <input style="background-color: rgb(255, 255, 255); background-image: url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif); background-position: 0% 50%; background-repeat: no-repeat no-repeat;" type="text" name="q" size="40">
+    <input style="border-color:#CCCCCC #999999 #999999 #CCCCCC; border-style:double; border-width:1px; overflow:visible;" type="submit" name="sa" value="Search">
+  </div>
+<input name="siteurl" type="hidden" value="www.thegeekstuff.com/2012/08/c-linked-list-example/"><input name="ref" type="hidden" value="www.google.co.in/"><input name="ss" type="hidden" value=""></form>
+<script type="text/javascript" src="./C Linked List Data Structure Explained with an Example C Program_files/jsapi"></script>
+<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script><script src="./C Linked List Data Structure Explained with an Example C Program_files/saved_resource(1)" type="text/javascript"></script><link href="./C Linked List Data Structure Explained with an Example C Program_files/transliteration.css" type="text/css" rel="stylesheet"><script src="./C Linked List Data Structure Explained with an Example C Program_files/transliteration.I.js" type="text/javascript"></script>
+<script type="text/javascript" src="./C Linked List Data Structure Explained with an Example C Program_files/t13n"></script>
+<script type="text/javascript" src="./C Linked List Data Structure Explained with an Example C Program_files/brand"></script>
+<br></div>
+		</li><li class="widget widget_text" id="text-3">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-8090601437064582";
+/* TGS Right Bar Rectangle Text Ad */
+google_ad_slot = "9054077260";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br></div>
+		</li><li class="widget widget_text" id="text-18"><h3>COURSE</h3>			<div class="textwidget"><ul>
+<li><a href="http://www.thegeekstuff.com/linux-sysadmin/">Linux Sysadmin CentOS 6 Course</a> - Master the Tools, Configure it Right, and be Lazy</li>
+</ul></div>
+		</li><li class="widget widget_text" id="text-4"><h3>EBOOKS</h3>			<div class="textwidget"><ul>
+<li><img title="Linux 101 Hacks Book" src="./C Linked List Data Structure Explained with an Example C Program_files/free-small.png" alt="Linux 101 Hacks Book">&nbsp;<a href="http://www.thegeekstuff.com/linux-101-hacks-ebook/">Linux 101 Hacks 2nd Edition eBook</a> - Practical Examples to Build a Strong Foundation in Linux</li>
+<li><a href="http://www.thegeekstuff.com/bash-101-hacks-ebook/">Bash 101 Hacks eBook</a> - Take Control of Your Bash Command Line and Shell Scripting</li>
+<li><a href="http://www.thegeekstuff.com/sed-awk-101-hacks-ebook/">Sed and Awk 101 Hacks eBook</a> - Enhance Your UNIX / Linux Life with Sed and Awk</li>
+<li><a href="http://www.thegeekstuff.com/vim-101-hacks-ebook/">Vim 101 Hacks eBook</a> - Practical Examples for Becoming Fast and Productive in Vim Editor</li>
+<li><a href="http://www.thegeekstuff.com/nagios-core-ebook/">Nagios Core 3 eBook</a> - Monitor Everything, Be Proactive, and Sleep Well</li>
+</ul></div>
+		</li><li class="widget widget_text" id="text-22">			<div class="textwidget"><iframe src="./C Linked List Data Structure Explained with an Example C Program_files/likebox.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:258px;" allowtransparency="true"></iframe></div>
+		</li><li class="widget widget_text" id="text-17"><h3>POPULAR POSTS</h3>			<div class="textwidget"><ul>
+<li><a href="http://www.thegeekstuff.com/2009/01/12-amazing-and-essential-linux-books-to-enrich-your-brain-and-library/">12 Amazing and Essential Linux Books To Enrich Your Brain and Library</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/12/50-unix-linux-sysadmin-tutorials/">50 UNIX / Linux Sysadmin Tutorials</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/11/50-linux-commands/">50 Most Frequently Used UNIX / Linux Commands (With Examples)</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/08/gtd-getting-things-done/">How To Be Productive and Get Things Done Using GTD</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/03/30-things-to-do-when-you-are-bored-and-have-a-computer/">30 Things To Do When you are Bored and have a Computer</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/09/linux-file-system-structure/">Linux Directory Structure (File System Structure) Explained with Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/06/15-practical-crontab-examples/">Linux Crontab: 15 Awesome Cron Job Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/03/15-practical-unix-grep-command-examples/">Get a Grip on the Grep! – 15 Practical Grep Command Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/07/linux-ls-command-examples/">Unix LS Command: 15 Practical Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2008/08/15-examples-to-master-linux-command-line-history/">15 Examples To Master Linux Command Line History</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/08/bug-tracking-system/">Top 10 Open Source Bug Tracking System</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/01/vi-and-vim-macro-tutorial-how-to-record-and-play/">Vi and Vim Macro Tutorial: How To Record and Play</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/">Mommy, I found it! -- 15 Practical Linux Find Command Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/07/best-gmail-tips-and-tricks/">15 Awesome Gmail Tips and Tricks</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/06/expertise-in-google-search/">15 Awesome Google Search Tips and Tricks</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/08/raid-levels-tutorial/">RAID 0, RAID 1, RAID 5, RAID 10 Explained with Diagrams</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/01/15-practical-unix-linux-top-command-examples/">Can You Top This? 15 Practical Linux Top Command Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/09/top-5-best-network-monitoring-tools/">Top 5 Best System Monitoring Tools</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/06/top-5-best-linux-os-distributions/">Top 5 Best Linux OS Distributions</a></li>
+<li><a href="http://www.thegeekstuff.com/2008/06/how-to-monitor-remote-linux-host-using-nagios-30/">How To Monitor Remote Linux Host using Nagios 3.0</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/01/awk-introduction-tutorial-7-awk-print-examples/">Awk Introduction Tutorial – 7 Awk Print Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/09/rsync-command-examples/">How to Backup Linux? 15 rsync Command Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/09/the-ultimate-wget-download-guide-with-15-awesome-examples/">The Ultimate Wget Download Guide With 15 Awesome Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/07/top-5-best-linux-text-editors/">Top 5 Best Linux Text Editors</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/08/tcpdump-command-examples/">Packet Analyzer: 15 TCPDUMP Command Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/06/bash-array-tutorial/">The Ultimate Bash Array Tutorial with 15 Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/">3 Steps to Perform SSH Login Without Password Using ssh-keygen &amp; ssh-copy-id</a></li>
+<li><a href="http://www.thegeekstuff.com/2009/10/unix-sed-tutorial-advanced-sed-substitution-examples/">Unix Sed Tutorial: Advanced Sed Substitution Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2010/03/netstat-command-examples/">UNIX / Linux: 10 Netstat Command Examples</a></li>
+<li><a href="http://www.thegeekstuff.com/2008/06/the-ultimate-guide-for-creating-strong-passwords/">The Ultimate Guide for Creating Strong Passwords</a></li>
+<li><a href="http://www.thegeekstuff.com/2008/08/6-steps-to-secure-your-home-wireless-network/">6 Steps to Secure Your Home Wireless Network</a></li>
+<li><a href="http://www.thegeekstuff.com/2008/08/turbocharge-putty-with-12-powerful-add-ons-software-for-geeks-3/">Turbocharge PuTTY with 12 Powerful Add-Ons</a></li>
+</ul></div>
+		</li><li class="widget widget_text" id="text-19"><h3>CATEGORIES</h3>			<div class="textwidget"><ul>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/linux/">Linux Tutorials</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/vim-2/">Vim Editor</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/sed/">Sed Scripting</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/awk/">Awk Scripting</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/bash-2/">Bash Shell Scripting</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/nagios-2/">Nagios Monitoring</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/openssh-2/">OpenSSH</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/iptables/">IPTables Firewall</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/apache/">Apache Web Server</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/mysql/">MySQL Database</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/perl/">Perl Programming</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/google/">Google Tutorials</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/ubuntu/">Ubuntu Tutorials</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/postgresql/">PostgreSQL DB</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/hello-world/">Hello World Examples</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/c-programming/">C Programming</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/c-plus-plus/">C++ Programming</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/dell-2/">DELL Server Tutorials</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/oracle/">Oracle Database</a></li>
+<li><a rel="nofollow" href="http://www.thegeekstuff.com/category/vmware/">VMware Tutorials</a></li>
+</ul></div>
+		</li><li class="widget widget_text" id="text-20">			<div class="textwidget"><div id="___person_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 300px; height: 106px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 300px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 106px;" tabindex="0" vspace="0" width="100%" id="I2_1394086251921" name="I2_1394086251921" src="./C Linked List Data Structure Explained with an Example C Program_files/person.html" data-gapiattached="true" title="+Badge"></iframe></div></div>
+		</li>				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+<div class="col_footer1">
+	<ul class="sidebar_list">
+<li id="text-7" class="widget widget_text"><h3>About The Geek Stuff</h3>			<div class="textwidget"><br>
+<img class="float" title="Ramesh Natarajan" src="./C Linked List Data Structure Explained with an Example C Program_files/ramesh-small.gif" alt="Linux 101 Hacks Book">
+My name is <strong>Ramesh Natarajan</strong>. I will be posting instruction guides, how-to, troubleshooting tips and tricks on Linux, database, hardware, security and web. My focus is to write articles that will either teach you or help you resolve a problem. Read more about <a href="http://www.thegeekstuff.com/about/">Ramesh Natarajan</a> and the blog.</div>
+		</li>
+<li id="text-8" class="widget widget_text"><h3>Support Us</h3>			<div class="textwidget"><br>
+Support this blog by purchasing one of my ebooks.
+<br><br>
+<a rel="nofollow" href="http://www.thegeekstuff.com/bash-101-hacks-ebook/">Bash 101 Hacks eBook</a>
+<br><br>
+<a rel="nofollow" href="http://www.thegeekstuff.com/sed-awk-101-hacks-ebook/">Sed and Awk 101 Hacks eBook</a>
+<br><br>
+<a rel="nofollow" href="http://www.thegeekstuff.com/vim-101-hacks-ebook/">Vim 101 Hacks eBook</a>
+<br><br>
+<a rel="nofollow" href="http://www.thegeekstuff.com/nagios-core-ebook/">Nagios Core 3 eBook</a></div>
+		</li>
+<li id="text-9" class="widget widget_text"><h3>Contact Us</h3>			<div class="textwidget"><br>
+<strong>Email Me :</strong>
+Use this <a href="http://www.thegeekstuff.com/contact" rel="nofollow">Contact Form</a> to get in touch me with your comments, questions or suggestions about this site. You can also simply drop me a line to say hello!.
+<br><br>
+<a title="Follow us on Google+" href="https://plus.google.com/112493711428194838421/posts">Follow us on Google+</a>
+<br><br>
+<a title="Follow us on Twitter" href="http://twitter.com/thegeekstuff" rel="nofollow">Follow us on Twitter</a>
+<br><br>
+<a href="http://www.facebook.com/thegeekstuff" rel="nofollow">Become a fan on Facebook</a>&nbsp;&nbsp;</div>
+		</li>
+	</ul>
+</div>
+
+<div class="cb"></div>
+	<p>Copyright © 2008–2014 Ramesh Natarajan. All rights reserved  | 
+<a href="http://www.thegeekstuff.com/copyright">Terms of Service</a> </p>	</div>
+</div>
+</div>
+<!--[if lte IE 8]>
+<div id="ie_clear"></div>
+<![endif]-->
+<script type="text/javascript" src="./C Linked List Data Structure Explained with an Example C Program_files/plusone.js" gapi_processed="true"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5302569-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+Content Delivery Network via Amazon Web Services: CloudFront: static.thegeekstuff.com
+
+ Served from: www.thegeekstuff.com @ 2014-03-05 23:15:03 by W3 Total Cache --><iframe name="oauth2relay803345679" id="oauth2relay803345679" src="./C Linked List Data Structure Explained with an Example C Program_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

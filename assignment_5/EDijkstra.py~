@@ -1,0 +1,152 @@
+###################################################################
+#																  #
+#	Title			:	Easy Dijkstra Problem					  #
+#	Author			:	Alfred Ajay Aureate R					  #
+#	Roll No			:	EE10B052								  #
+#	Course			:	EE4371 - Data Structures and Algorithms	  #
+#	Assignment No	:	5.1										  #
+#																  #
+###################################################################
+
+
+import sys
+
+
+# The following variables are used to keep track of the number of
+# lines read and its limit
+
+i = 0
+cases = 0
+offset = 1
+v = 0
+e = 0
+graph = {}
+
+# This loop reads every line, from a given text file till
+# the last line
+
+for inp_str in sys.stdin.readlines():
+
+
+	# The last EOF (say,'\n') are removed from the given string
+
+	inp_str = inp_str.split()
+
+
+	# The first line is noted as the number of strings to be read
+	# or rather number of palindrome string to be made
+
+	if i==0:
+		cases = int(inp_str[0])
+
+#	print "i is ",i
+#	print "offset is ",offset
+
+
+	if (cases!=0)&(i<offset-1)&(i!=0):
+	#	graph[vertex] = [vertex_dist_from_source, visited_flag, [dest_vertex_of_edge1_from_vertex, weight_of_edge1],... similarly for all edges from vertex]
+
+
+		if graph.has_key(int(inp_str[0])):
+			graph[int(inp_str[0])].append([int(inp_str[1]), int(inp_str[2])])
+		else:
+			graph[int(inp_str[0])] = ['inf', 0, [int(inp_str[1]), int(inp_str[2])]]
+			
+#		if(graph.has_key(int(inp_str[0])) & graph.has_key(int(inp_str[1]))):
+#			graph[int(inp_str[0])].append([int(inp_str[1]), int(inp_str[2])])
+#			graph[int(inp_str[1])].append([int(inp_str[0]), int(inp_str[2])])
+#		elif (graph.has_key(int(inp_str[0])) & (not(graph.has_key(int(inp_str[1]))))):
+#			graph[int(inp_str[0])].append([int(inp_str[1]), int(inp_str[2])])
+#			graph[int(inp_str[1])] = ['inf', 0, [int(inp_str[0]), int(inp_str[2])]]
+#		elif ((not(graph.has_key(int(inp_str[0])))) & graph.has_key(int(inp_str[1]))):
+#			graph[int(inp_str[0])] = ['inf', 0, [int(inp_str[1]), int(inp_str[2])]]
+#			graph[int(inp_str[1])].append([int(inp_str[0]), int(inp_str[2])])
+#		else:
+#			graph[int(inp_str[0])] = ['inf', 0, [int(inp_str[1]), int(inp_str[2])]]
+#			graph[int(inp_str[1])] = ['inf', 0, [int(inp_str[0]), int(inp_str[2])]]
+
+#		print "graph is ",graph
+#		print "inp_str[0] is ",int(inp_str[0])
+#		print "inp_str[1] is ",int(inp_str[1])
+
+	
+	elif (cases!=0)&(i==offset-1)&(i!=0):	
+		srce = inp_str[0]
+		dest = inp_str[1]
+		graph[int(inp_str[0])][0] = 0 # distance from source is initialized to 0
+		min_dist = 0
+		cur_ver = srce
+#		print "it's here"
+
+
+	if (i==offset-1)&(len(graph)!=0):
+		# Dijkstra's algorithm implementation or shortest path algorithm
+		j = 0
+
+		while (j<v):
+			if not(graph.has_key(j+1)):
+				graph[j+1] = ['inf', 0]
+			j+=1
+
+
+#		print "it's here0"
+#		print "srce is ",int(srce)
+#		print "dest is ",int(dest)
+#		print "graph[int(dest)][1] is ",graph[int(dest)][1]
+#		print "grph is ",graph
+
+		graph_temp = []
+		while(graph[int(dest)][1]==0):			
+##		while(cur_ver!=dest):			
+##		for ver in graph:
+##		while (1):
+#			print "graph[int(dest)][1] is ",graph[int(dest)][1]
+			if (graph[int(dest)][1]==0):
+#				print "it's here1"
+				k = 2
+				min_dist_temp = 'inf'
+				while (k<len(graph[int(cur_ver)])):
+#					print "it's here2"
+					if graph[graph[int(cur_ver)][k][0]][1]==0:
+						if (graph[graph[int(cur_ver)][k][0]][0] > (graph[int(cur_ver)][0] + graph[int(cur_ver)][k][1])):
+							graph[graph[int(cur_ver)][k][0]][0] = graph[int(cur_ver)][0] + graph[int(cur_ver)][k][1]
+							graph_temp.append(graph[int(cur_ver)][k][0])
+###						if (min_dist_temp > (min_dist + graph[graph[int(cur_ver)][k][0]][0])):
+###							min_dist_temp = min_dist + graph[graph[int(cur_ver)][k][0]][0]
+#							print "min_dist is ",min_dist
+###							next_ver = graph[int(cur_ver)][k][0]
+					k+=1
+
+				graph[int(cur_ver)][1] = 1 # marked as visited	
+				graph_temp.remove(int(cur_ver))
+
+				for ver in graph_temp:
+					if (graph[int(ver)][1]==0)&(graph[int(ver)][0]!='inf'):
+						if (min_dist_temp > graph[int(ver)][0]):
+							min_dist_temp = graph[int(ver)][0]
+							next_ver = int(ver)
+
+				if (cur_ver==next_ver):
+					break
+#				min_dist = min_dist_temp
+				cur_ver = next_ver
+
+			else:
+				break
+		
+#		print min_dist
+		if (graph[int(dest)][0]=='inf'):
+			print "NO"
+		else:
+			print graph[int(dest)][0]
+
+
+	if i==offset:
+		v = int(inp_str[0])	# no. of vertices
+		e = int(inp_str[1])	# no. of edges
+		graph = {}
+		offset+=(e+2)
+
+	i+=1
+#	cases-=1 # not sure if it's required
+

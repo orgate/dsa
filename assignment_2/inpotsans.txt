@@ -1,0 +1,25 @@
+A B sqrt +
+A 2 B C + sqrt * +
+B u- B 2 ^ 4 A C * * - sqrt +
+A u- B C - D + -
+A
+A u-
+ERROR
+A A u- B + sqrt +
+ERROR
+ERROR
+ERROR
+ERROR
+a b +
+a sqrt a - b + +
+ERROR
+ERROR
+b u- b 2 ^ 4 a c * * - sqrt 2 a * / +
+a b +
+ERROR
+a b u- /
+ERROR
+ERROR
+a b sqrt -
+a b u- +
+a b a - u- +

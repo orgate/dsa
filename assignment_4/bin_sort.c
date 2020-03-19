@@ -1,0 +1,250 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+
+struct Node
+{
+	//struct Node *node;
+	struct Node *left;
+	struct Node *right;
+	struct Node *parent;
+	char elm[50];
+//	int	h; //height
+	int in_print_pass; //flag used while pre printing or passing
+//	int post_print_pass; //flag used while post printing or passing
+
+};
+
+int main ()
+{
+
+	//printf("argc and argv are: %d and %s\n",argc,argv[1]);
+	struct Node* root; //root node
+	root = (struct Node*)malloc(sizeof(struct Node));	
+/// 	char str[] ="insert 4353";
+	//printf("%s\n",str);
+///	char* pch;
+
+///	pch = (char*)malloc(50 * sizeof(char));
+
+//	char* pch2[2];
+//	pch2[0] = (char*)malloc(50 * sizeof(char));
+//	pch2[1] = (char*)malloc(50 * sizeof(char));
+
+ 
+	int i;
+	int inserted = 0;
+	int elem_counter = 0;
+//	FILE *fp;
+//	char* str1;
+	char* line;
+	line = (char*)malloc(50 * sizeof(char));
+
+///	fp = fopen(argv[1], "r");
+
+	struct Node* node;
+	node = (struct Node*)malloc(sizeof(struct Node)); //not sure if it's required
+	node = root;
+///	pch = strtok (str," ");
+///	pch2[0] = pch;
+	//printf("aray elm is %s\n",pch1[0]);
+///	pch = strtok(NULL, " ");
+///	pch2[1] = pch;
+	//printf("aray elm is %s\n",pch1[1]);
+	//printf("nothing happened yet\n");
+
+	//printf("str2int is %d\n",atoi(pch1[1]));
+
+//	node->elm = (char*)malloc(50 * sizeof(char));
+///	strcpy(node->elm,pch2[1]);
+//	node->elm = pch2[1][];
+	//printf("error could be here %s\n",node->elm);
+	node->left = NULL;
+	node->right = NULL;
+	node->parent = NULL; //i think this line is not required
+	strcpy(node->elm,"");
+	node->in_print_pass = 0;
+//	node->h = 0; //is it 0 or 1?
+//	elem_counter++;
+
+	while (gets(line)!=NULL) //correct this line
+	{
+		//fgets(line, 32, fp);
+		//printf("inside while\n");
+		char* pch;
+		pch = (char*)malloc(50 * sizeof(char));
+		char* pch1[2];
+		pch1[0] = (char*)malloc(50 * sizeof(char));
+		pch1[1] = (char*)malloc(50 * sizeof(char));
+		i = 0;
+		sscanf(line,"%s %s",pch1[0],pch1[1]);
+//		printf("pch1 is %s val is %s\n",pch1[0],pch1[1]);
+
+/*		pch = strtok (line," ");
+		while (pch != NULL)
+		{
+			pch1[i] = pch;
+			//printf("pch1[%d] is %s and pch is %s\n",i,pch1[i],pch);
+			pch = strtok (NULL, " ");
+			i++;
+		}
+
+		pch1[0][strlen(pch1[0])-1] = '\0';
+*/		//printf("pch1[0] is %s\n",pch1[0]);
+		
+		if (strcmp(pch1[0],"insert")==0)
+		{
+			//printf("inside if\n");
+///			pch1[1][strlen(pch1[1])-1] = '\0';
+			node = root;
+
+//			struct Node *node1;
+
+//			node1 = (struct Node*)malloc(sizeof(struct Node));
+//			node1->left = NULL;
+//			node1->right = NULL;
+//			node1->elm = (char*)malloc(32 * sizeof(char));
+//			node1->elm = pch1[1];
+//			printf("just checking node1->elm %s\n",node1->elm);
+
+			while (inserted==0)
+			{
+				
+				if (strcmp(node->elm,"")==0)
+				{
+					strcpy(node->elm,pch1[1]);
+					elem_counter++;		
+					inserted = 1;	
+				}
+				else if ((atof(node->elm)>atof(pch1[1]))&&(node->left == NULL))
+				{
+					struct Node *node_temp;
+					node->left = (struct Node*)malloc(sizeof(struct Node)); //not sure if it is required
+					node_temp = node;
+					node = node->left;
+					//node->elm = (char*)malloc(32 * sizeof(char));
+					strcpy(node->elm,pch1[1]);
+//					node->elm = pch1[1];
+					node->left = NULL;					
+					node->right = NULL;					
+					node->parent = node_temp;					
+
+//					node->left = node1;
+//					node1->parent = (struct Node*)malloc(sizeof(struct Node)); //not sure if it is required
+//					node1->parent = node;
+//					node1->h = node->h + 1;
+					inserted = 1;
+					elem_counter++;
+//					printf("trying01 %s\n",node1->elm);
+				}
+				else if ((atof(node->elm)<=atof(pch1[1]))&&(node->right == NULL))
+				{
+//					node->right = node1;
+//					node1->parent = node;
+//					node1->h = node->h + 1;
+
+					struct Node *node_temp;
+					node->right = (struct Node*)malloc(sizeof(struct Node)); //not sure if it is required
+					node_temp = node;
+					node = node->right;
+					strcpy(node->elm, pch1[1]);
+//					node->elm = (char*)malloc(32 * sizeof(char));
+//					node->elm = pch1[1];
+					node->left = NULL;					
+					node->right = NULL;					
+					node->parent = node_temp;					
+
+
+					inserted = 1;
+					elem_counter++;
+				}
+				else if (atof(node->elm) > atof(pch1[1]))
+				{
+//					printf("trying3 %s\n",(node->right)->elm);
+					node = node->left;
+
+//					printf("trying3 %s\n",node1->elm);
+					//inserted = 1;//just for testing
+				}
+				else if (atof(node->elm) <= atof(pch1[1]))
+				{
+					node = node->right;
+					//inserted = 1;//just for testing
+				}
+				
+			}
+///			printf("exited after inserted %s\n",pch1[1]);
+			inserted = 0;
+
+		}
+
+		else if (strcmp(pch1[0],"print_sort")==0)
+		{
+//			printf("inside sort loop\n");
+			int elm_counter_sort;
+			elm_counter_sort = elem_counter;
+			node = root;
+			while(elm_counter_sort!=0)
+			{
+				if((node->left==NULL)&&(node->right!=NULL)&&(node->in_print_pass ==0))//here printed means printed or passed
+				{
+					printf("%s\n",node->elm);
+					node->in_print_pass = 1;
+					node = node->right;
+					elm_counter_sort--;
+				}
+				else if ((node->left==NULL)&&(node->right==NULL)&&(node->in_print_pass ==0))
+				{
+					printf("%s\n",node->elm);
+					node->in_print_pass = 1;
+					node = node->parent;
+					elm_counter_sort--;
+				}
+				else if ((node->left!=NULL)&&(node->right==NULL)&&(node->in_print_pass ==0))
+				{
+					node->in_print_pass = 1;
+					node = node->left;
+				}
+				else if ((node->left!=NULL)&&(node->right==NULL)&&(node->in_print_pass ==1))
+				{
+					printf("%s\n",node->elm);
+					node->in_print_pass = 2;
+					node = node->parent;
+					elm_counter_sort--;
+				}
+				else if ((node->left==NULL)&&(node->right!=NULL)&&(node->in_print_pass ==1))
+				{
+					node->in_print_pass = 2;
+					node = node->parent;
+				}
+				else if ((node->left!=NULL)&&(node->right!=NULL)&&(node->in_print_pass ==0))
+				{
+					node->in_print_pass = 1;
+					node = node->left;
+				}
+				else if ((node->left!=NULL)&&(node->right!=NULL)&&(node->in_print_pass ==1))
+				{
+					printf("%s\n",node->elm);
+					node->in_print_pass = 2;
+					node = node->right;
+					elm_counter_sort--;
+				}
+				else if ((node->left!=NULL)&&(node->right!=NULL)&&(node->in_print_pass ==2))
+				{
+					node->in_print_pass = 3;
+					node = node->parent;
+				}
+
+			}
+//			printf("%s\n",node->elm);
+//			node->in_print_pass = 2; //not required
+
+			
+		}
+
+	}
+
+//	fclose(fp);
+	return 0;
+}

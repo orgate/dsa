@@ -1,0 +1,11 @@
+A + C / - B
+A + ( C / - B )
+- B + A
+B ^ 2 - ( 4 * A + - C )
+- B ^ 2 - ( - 4 * A + - C )
+- B ^ A
+4 * A * C - ( - B ^ A + C )
+- B ^ A + C
+B - ( ( A * C )  - D )
+( ( A + C )
+A + sqrt ( B )

@@ -1,0 +1,12 @@
+insert 1234
+insert 1423
+insert 654
+insert 2
+insert 10928
+insert 432
+print_pre
+insert 123
+insert 2315
+insert 4
+print_post
+

@@ -1,0 +1,397 @@
+###################################################################
+#																  #
+#	Title			:	Infix notation to RPN or postfix notation #
+#	Author			:	Alfred Ajay Aureate R					  #
+#	Roll No			:	EE10B052								  #
+#	Course			:	EE4371 - Data Structures and Algorithms	  #
+#	Assignment No	:	2										  #
+#																  #
+###################################################################
+
+
+import sys
+
+# Class used for stack related operations
+class stackclass:
+
+	# The actual stack used is initiated
+	# below
+
+	stack = []
+
+
+	# This function initializes the stack
+	# when class is initiated
+	# The syntax is in-built in Python
+
+	def __init__(self):
+		self.stack = []
+
+
+	# This function gives the length of the
+	# stack when length of class is called
+	# The syntax is in-built in Python
+
+	def __len__(self):
+		return len(self.stack)
+
+
+	# This function pushes an element to the
+	# top or the end of stack
+
+	def stack_push(self,element):
+		self.stack.append(element)
+		return self.stack
+
+
+	# This function pops the top or the last element
+	# from the stack
+
+	def stack_pop(self):	
+		return self.stack.pop()
+
+
+# This function checks whether the given string could be
+# converted to a floating point number or not
+
+def float_check(value):
+		try:
+			float(value)
+			return True
+		except ValueError:
+			return False
+
+
+# This function converts the input expression in the infix
+# notation into postfix notation recursively as long as it
+# encounters a ')' or the end of line
+
+def in2post(input_list,k,brac_count,op_count,char_count):
+
+	# Declarations
+
+	stck = stackclass()		# This declares the stack class
+
+	outputlist = []			# This declares the output list
+							# that would hold the dynamic output
+
+	err_flag = 0			# This declares and initiates the
+							# error flag
+
+	temp_start = k			# This declares the the start of
+							# the expression or '('
+
+	brac_count = brac_count	# This declares the bracket counter
+							# which is incremented when '('
+							# is encountered and decremented
+							# when ')' is encountered
+
+	op_count = op_count		# This declares the operator count
+
+	char_count = char_count	# This declares the character count
+
+
+	# This loop runs for all the parsed symbols or numbers
+	# stored in input_list until all of them are read or until
+	# it finds an error
+
+	while k<len(input_list):
+
+
+		# Checks for the condition whether charcters and
+		# operators are balanced for the binary operators
+
+		if ((char_count-op_count)<0)|((char_count-op_count)>1):
+			err_flag=1
+			break
+
+
+		# Checks for the symbol ')'. It then ends the
+		# temporary stack created and appends the temporary
+		# output list to its parent output list
+
+		elif (input_list[k]==')'):
+
+			brac_count-=1
+
+			if (len(outputlist)==0):
+				err_flag=1
+			else:
+				while len(stck)>0:
+					outputlist.append(stck.stack_pop())
+
+			return outputlist,k,err_flag,brac_count,op_count,char_count
+
+
+		# Checks for the symbol '('. It then recursively
+		# calls the present function (in2post), with all
+		# the counters still continued for the called function.
+		# It then updates the values of all counters after the
+		# function returns.
+
+		elif (input_list[k]=='('):
+
+			brac_count+=1
+
+			in2post_out = in2post(input_list,k+1,brac_count,op_count,char_count)
+
+			l=0
+			temp = []
+
+			while l<len(in2post_out[0]):
+				temp.append(in2post_out[0][l])
+				l+=1
+
+			m=0
+
+			while m<len(temp):
+				outputlist.append(temp[m])
+				m+=1
+
+			k = in2post_out[1]
+			brac_count = in2post_out[3]
+			op_count = in2post_out[4]
+			char_count = in2post_out[5]
+
+
+		# Updates the stack with the first operator in the
+		# expression or the first operator after '(' symbol
+
+		elif (len(stck)==0)&((input_list[k]=='+')|(input_list[k]=='-')|(input_list[k]=='*')|(input_list[k]=='/')|(input_list[k]=='^')|(input_list[k]=='sqrt')|(input_list[k]=='u-')|(input_list[k][0]=='-')):
+
+			if ((input_list[k]=='-')|(input_list[k][0]=='-'))&(k==temp_start):
+				stck.stack_push('u-')
+			else:
+				stck.stack_push(input_list[k])
+
+				if input_list[k]!='sqrt':
+					op_count+=1
+
+
+		# Runs the conversion algorithm for the operator '+'
+
+		elif input_list[k]=='+':
+
+			temp = stck.stack_pop()			
+			outputlist.append(temp)
+
+			if (temp=='+')|(temp=='-'):
+				stck.stack_push(outputlist.pop())
+				stck.stack_push('+')
+			else:
+				stck.stack_push(outputlist.pop())
+
+				while (temp!='+')&(temp!='-')&(len(stck)>=1):
+					temp = stck.stack_pop()
+					outputlist.append(temp)
+
+				stck.stack_push('+')
+
+			op_count+=1
+
+
+		# Runs the conversion algorithm for the operator '-'
+
+		elif (input_list[k]=='-')&(input_list[k-1]!='+')&(input_list[k-1]!='-')&(input_list[k-1]!='*')&(input_list[k-1]!='/')&(input_list[k-1]!='^')&(input_list[k-1]!='sqrt')&(input_list[k-1]!='u-')&(k>0):
+
+			temp = stck.stack_pop()			
+			outputlist.append(temp)
+
+			if (temp=='+')|(temp=='-'):
+				stck.stack_push(outputlist.pop())
+				stck.stack_push('-')
+			else:
+				stck.stack_push(outputlist.pop())
+
+				while (temp!='+')&(temp!='-')&(len(stck)>=1):
+					temp = stck.stack_pop()
+					outputlist.append(temp)
+
+				stck.stack_push('-')
+
+			op_count+=1
+
+
+		# Runs the conversion algorithm for the operator '*'
+
+		elif input_list[k]=='*':
+
+			temp = stck.stack_pop()			
+			outputlist.append(temp)
+
+			if (temp=='+')|(temp=='-')|(temp=='*')|(temp=='/'):
+				stck.stack_push(outputlist.pop())
+				stck.stack_push('*')
+			else:
+				stck.stack_push(outputlist.pop())
+
+				while (temp!='+')&(temp!='-')&(temp!='*')&(temp!='/')&(len(stck)>=1):
+					temp = stck.stack_pop()
+					outputlist.append(temp)
+
+				stck.stack_push('*')
+
+			op_count+=1
+
+
+		# Runs the conversion algorithm for the operator '/'
+
+		elif input_list[k]=='/':
+
+			temp = stck.stack_pop()			
+			outputlist.append(temp)
+
+			if (temp=='+')|(temp=='-')|(temp=='*')|(temp=='/'):
+				stck.stack_push(outputlist.pop())
+				stck.stack_push('/')
+			else:
+				stck.stack_push(outputlist.pop())
+
+				while (temp!='+')&(temp!='-')&(temp!='*')&(temp!='/')&(len(stck)>=1):
+					temp = stck.stack_pop()
+					outputlist.append(temp)
+
+				stck.stack_push('/')
+
+			op_count+=1
+
+
+		# Runs the conversion algorithm for the operator '^'
+
+		elif input_list[k]=='^':
+
+			temp = stck.stack_pop()			
+			outputlist.append(temp)
+
+			if (temp=='+')|(temp=='-')|(temp=='*')|(temp=='/')|(temp=='^'):
+				stck.stack_push(outputlist.pop())
+				stck.stack_push('^')
+			else:
+				stck.stack_push(outputlist.pop())
+
+				while (temp!='+')&(temp!='-')&(temp!='*')&(temp!='/')&(temp!='^')&(len(stck)>=1):
+					temp = stck.stack_pop()
+					outputlist.append(temp)
+
+				stck.stack_push('^')
+
+			op_count+=1
+
+
+		# Runs the conversion algorithm for the operator 'sqrt'
+
+		elif input_list[k]=='sqrt':
+
+			temp = stck.stack_pop()			
+			outputlist.append(temp)
+
+			if (temp=='+')|(temp=='-')|(temp=='*')|(temp=='/')|(temp=='^')|(temp=='sqrt')|(temp=='u-'):
+				stck.stack_push(outputlist.pop())
+				stck.stack_push('sqrt')
+			else:
+				stck.stack_push(outputlist.pop())
+
+				while (temp!='+')&(temp!='-')&(temp!='*')&(temp!='/')&(temp!='^')&(temp!='sqrt')&(temp!='u-')&(len(stck)>=1):
+					temp = stck.stack_pop()
+					outputlist.append(temp)
+
+				stck.stack_push('sqrt')
+
+
+		# Runs the conversion algorithm for the unary operator
+		# '-' or 'u-'
+
+		elif (input_list[k][0]=='-')|(input_list[k]=='u-')|(input_list[k]=='-'):
+
+			temp = stck.stack_pop()			
+			outputlist.append(temp)
+
+			if (temp=='+')|(temp=='-')|(temp=='*')|(temp=='/')|(temp=='^')|(temp=='sqrt')|(temp=='u-'):
+				stck.stack_push(outputlist.pop())
+				stck.stack_push('u-')
+			else:
+				stck.stack_push(outputlist.pop())
+
+				while (temp!='+')&(temp!='-')&(temp!='*')&(temp!='/')&(temp!='^')&(temp!='sqrt')&(temp!='u-')&(len(stck)>=1):
+					temp = stck.stack_pop()
+					outputlist.append(temp)
+
+				stck.stack_push('u-')
+		
+
+		# Otherwise, it appends the character received to the
+		# output list
+
+		else:
+			outputlist.append(input_list[k])
+			char_count+=1
+		
+		k+=1
+
+
+	# Appends the remaining operators in the stack to the
+	# output list
+
+	while len(stck)>0:
+		outputlist.append(stck.stack_pop())
+
+	return outputlist,k,err_flag,brac_count,op_count,char_count
+
+
+# This loop reads every line, from a given text file till
+# the last line
+
+for expr in sys.stdin.readlines():
+
+
+	# This parses a line removing all spaces and stores the
+	# whole set of symbols or numbers belonging to a line
+
+	input_list = expr.split()
+
+
+	# Initializing the output list that would temporarily
+	# contain the output expression in the form of list
+
+	outputlist = []
+	
+	                 
+	# Initializing the input symbol counter
+
+	k=0
+	
+
+	# Gets the final output of the conversion
+
+	output 		= 	in2post(input_list,k,0,0,0)	
+
+
+	outputlist 	= 	output[0]	# It gives the output expression
+								# in the form of list
+
+	err_flag 	= 	output[2]	# It gives the error flag
+	brac_count 	= 	output[3]	# It gives the bracket count
+	op_count 	= 	output[4]	# It gives the operator count
+	char_count 	= 	output[5]	# It gives the character count
+
+
+	# Gives an error if brackets or character and operators
+	# (binary operator) are unbalanced or misplaced
+
+	if (brac_count!=0)|((char_count-op_count)!=1):
+		err_flag=1
+	
+	# Prints "ERROR" if error flag is 1
+
+	if err_flag==1:
+		print "ERROR"
+
+
+	# Otherwise, it joins and converts the output list into
+	# an expression with spaces and prints it
+
+	else:
+		print ''.join(a + ' ' for a in outputlist)
+
+
+	# THE END

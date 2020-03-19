@@ -1,0 +1,172 @@
+###################################################################
+#																  #
+#	Title			:	Island capitals							  #
+#	Author			:	Alfred Ajay Aureate R					  #
+#	Roll No			:	EE10B052								  #
+#	Course			:	EE4371 - Data Structures and Algorithms	  #
+#	Assignment 		:	Final exam								  #
+#																  #
+###################################################################
+
+
+import sys
+from heapq import *
+
+# The following variables are used to keep track of the number of
+# lines read and its limit
+
+i = 0
+offset = 0
+v = 0
+e = 0
+graph = []
+
+# This loop reads every line, from a given text file till
+# the last line
+
+for inp_str in sys.stdin.readlines():
+
+	inp_str = inp_str.split()
+
+	if i<offset:
+		if not(towns.has_key(inp_str[0])):
+			towns[inp_str[0]] = t			#town_name  --->  number
+			townlist[t] = inp_str[0]		#number     --->  town_name
+			townslistdyn[t] = [inp_str[0],t]#number     --->  town_name
+			t+=1
+
+		if not(towns.has_key(inp_str[1])):
+			towns[inp_str[1]] = t			#town_name  --->  number
+			townlist[t] = inp_str[1]		#number     --->  town_name
+			townslistdyn[t] = [inp_str[1],t]#number     --->  town_name
+			t+=1
+
+		graph[towns[inp_str[0]]].append([towns[inp_str[1]], int(inp_str[2])])
+		graph[towns[inp_str[1]]].append([towns[inp_str[0]], int(inp_str[2])])
+
+	
+	elif i==offset:	
+		v = int(inp_str[0])	# no. of vertices
+		e = int(inp_str[1])	# no. of edges
+		graph = []
+		towns = {}
+		townlist = ['']*v
+		townslistdyn = ['']*v
+		graphdist = []
+		offset+=(e+1)
+		t = 0
+		l = 0
+		while(l<v):
+			graph.append(['inf', 0])
+			l+=1
+
+	if (i==offset-1)&(len(graph)!=0):
+		capitals = []
+#		for town in townslistdyn:
+		while (len(townslistdyn)>0):
+			town = townslistdyn[0][0]	# newly added
+#			srce = towns[town]
+			srce = townslistdyn[0][1]
+			graph[srce][0] = 0 # distance from source is initialized to 0
+			cur_ver = srce
+			tot_dist = 0
+			m=0
+			graphdist = []
+			while(m<v):
+				k = 2	
+				while (k<len(graph[cur_ver])):	
+					if graph[graph[cur_ver][k][0]][1]==0:
+						if (graph[cur_ver][0]!='inf'):
+							if (graph[graph[cur_ver][k][0]][0] > (graph[cur_ver][0] + graph[cur_ver][k][1])):
+								graph[graph[cur_ver][k][0]][0] = graph[cur_ver][0] + graph[cur_ver][k][1]
+								heappush(graphdist, (graph[graph[cur_ver][k][0]][0], graph[cur_ver][k][0]))
+					k+=1
+
+				if (graph[cur_ver][1] != 1):
+					graph[cur_ver][1] = 1 # marked as visited	
+					m+=1
+
+				if (len(graphdist)>0):
+					nextvartemp = heappop(graphdist)
+					cur_ver = nextvartemp[1]
+				else:
+					break
+
+			ver = 0
+			islandtowns = 1
+			graph[srce][1] = 0
+			islandlist = [srce]
+			graph[srce][0] = 'inf'
+#			townslistdyn.remove(townlist[srce])
+			townslistdyn.remove([townlist[srce],srce])
+			islanddist = []
+			while (ver<v):
+				if (graph[ver][0]!='inf')&(ver!=srce):
+					townslistdyn.remove(townlist[ver])
+					graph[ver][1] = 0
+					islandlist.append(ver)
+					tot_dist+=graph[ver][0]
+					graph[ver][0] = 'inf'
+					islandtowns+=1
+#				else:
+#					graph[ver][1] = 0
+				ver+=1
+
+			islandcaptdist = []
+			heappush(islandcaptdist, (tot_dist, town))
+			itwns = 1
+			while (itwns<islandtowns):
+				srce = islandlist[itwns]
+				graph[srce][0] = 0 # distance from source is initialized to 0
+				cur_ver = srce
+				m=0
+				islanddist = []
+				while(m<islandtowns):
+					k = 2	
+					while (k<len(graph[cur_ver])):	
+						if graph[graph[cur_ver][k][0]][1]==0:
+							if (graph[graph[cur_ver][k][0]][0] > (graph[cur_ver][0] + graph[cur_ver][k][1])):
+								graph[graph[cur_ver][k][0]][0] = graph[cur_ver][0] + graph[cur_ver][k][1]
+								heappush(islanddist, (graph[graph[cur_ver][k][0]][0], graph[cur_ver][k][0]))
+						k+=1
+	
+					if (graph[cur_ver][1] != 1):
+						graph[cur_ver][1] = 1 # marked as visited	
+						m+=1
+	
+					if (len(islanddist)>0):
+						nextvartemp = heappop(islanddist)
+						cur_ver = nextvartemp[1]
+					else:
+						break
+	
+				ver = 0
+				tot_dist = 0
+				while (ver<islandtowns):
+					graph[islandlist[ver]][1] = 0
+					tot_dist+= graph[islandlist[ver]][0]
+					graph[islandlist[ver]][0] = 'inf'
+					ver+=1
+				heappush(islandcaptdist, (tot_dist, townlist[islandlist[itwns]]))
+				itwns+=1	
+
+			islandcapt = []
+			capttemp1 = heappop(islandcaptdist)
+			capttemp2 = heappop(islandcaptdist)
+
+			heappush(islandcapt,capttemp1[1])						
+
+			while(capttemp1[0]==capttemp2[0])&(len(islandcaptdist)>0):
+				heappush(islandcapt,capttemp2[1])						
+				capttemp2 = heappop(islandcaptdist)
+			if(capttemp1[0]==capttemp2[0])&(len(islandcaptdist)==0):
+				heappush(islandcapt,capttemp2[1])						
+			
+
+			capttemp = heappop(islandcapt)
+			heappush(capitals,capttemp)
+
+		while (len(capitals)>0):
+			print heappop(capitals)
+
+	i+=1

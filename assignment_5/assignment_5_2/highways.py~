@@ -1,0 +1,120 @@
+###################################################################
+#																  #
+#	Title			:	Highways (shortest route)				  #
+#	Author			:	Alfred Ajay Aureate R					  #
+#	Roll No			:	EE10B052								  #
+#	Course			:	EE4371 - Data Structures and Algorithms	  #
+#	Assignment No	:	5.2										  #
+#																  #
+###################################################################
+
+
+import sys
+
+
+# The following variables are used to keep track of the number of
+# lines read and its limit
+
+i = 0
+cases = 0
+offset = 1
+v = 0
+e = 0
+graph = {}
+
+# This loop reads every line, from a given text file till
+# the last line
+
+for inp_str in sys.stdin.readlines():
+
+
+	# The last EOF (say,'\n') are removed from the given string
+
+	inp_str = inp_str.split()
+
+	if i==0:
+		cases = int(inp_str[0])
+
+
+	if (cases!=0)&(i<offset)&(i!=0):
+
+		if (graph.has_key(int(inp_str[0])) & graph.has_key(int(inp_str[1]))):
+			graph[int(inp_str[0])].append([int(inp_str[1]), int(inp_str[2])])
+			graph[int(inp_str[1])].append([int(inp_str[0]), int(inp_str[2])])
+		elif (graph.has_key(int(inp_str[0])) & (not(graph.has_key(int(inp_str[1]))))):
+			graph[int(inp_str[0])].append([int(inp_str[1]), int(inp_str[2])])
+			graph[int(inp_str[1])] = ['inf', 0, [int(inp_str[0]), int(inp_str[2])]]
+			graph_nodekey[int(inp_str[1])-1] = int(inp_str[1])
+		elif ((not(graph.has_key(int(inp_str[0])))) & graph.has_key(int(inp_str[1]))):
+			graph[int(inp_str[0])] = ['inf', 0, [int(inp_str[1]), int(inp_str[2])]]
+			graph[int(inp_str[1])].append([int(inp_str[0]), int(inp_str[2])])
+			graph_nodekey[int(inp_str[0])-1] = int(inp_str[0])
+		else:
+			graph[int(inp_str[0])] = ['inf', 0, [int(inp_str[1]), int(inp_str[2])]]
+			graph[int(inp_str[1])] = ['inf', 0, [int(inp_str[0]), int(inp_str[2])]]
+			graph_nodekey[int(inp_str[0])-1] = int(inp_str[0])
+			graph_nodekey[int(inp_str[1])-1] = int(inp_str[1])
+	
+	elif i==offset:	
+		v = int(inp_str[0])	# no. of vertices
+		e = int(inp_str[1])	# no. of edges
+		graph = {}
+		offset+=(e+1)
+		srce = inp_str[2]
+		dest = inp_str[3]
+		min_dist = 0
+		cur_ver = int(srce)
+		graph_nodekey = []
+		l = 0
+		while(l<v):
+			graph_nodekey.append(0)
+			l+=1
+
+	if (i==offset-1)&(len(graph)!=0)&(i!=0):
+		# Dijkstra's algorithm implementation or shortest path algorithm
+		j = 0
+
+#		while (j<v):
+#			if not(graph.has_key(j+1)):
+#				graph[j+1] = ['inf', 0]
+#			j+=1
+
+		while (j<v):
+			if graph_nodekey[j]!=(j+1):
+				graph[j+1] = ['inf', 0]
+			j+=1
+
+
+		graph[int(srce)][0] = 0 # distance from source is initialized to 0
+
+		graph_temp = []
+		while(graph[int(dest)][1]==0):			
+			k = 2
+			min_dist_temp = 'inf'
+			while (k<len(graph[cur_ver])):
+				if graph[graph[cur_ver][k][0]][1]==0:
+					if (graph[graph[cur_ver][k][0]][0] > (graph[cur_ver][0] + graph[cur_ver][k][1])):
+						graph[graph[cur_ver][k][0]][0] = graph[cur_ver][0] + graph[cur_ver][k][1]
+						graph_temp.append(graph[cur_ver][k][0])
+				k+=1
+
+			graph[cur_ver][1] = 1 # marked as visited	
+
+			next_ver = cur_ver
+			for ver in graph_temp:
+				if (graph[int(ver)][1]==0)&(graph[int(ver)][0]!='inf'):
+					if (min_dist_temp > graph[int(ver)][0]):
+						min_dist_temp = graph[int(ver)][0]
+						next_ver = int(ver)
+
+			if (cur_ver==next_ver):
+				break
+			cur_ver = next_ver
+		
+		if (graph[int(dest)][0]=='inf'):
+			print "NONE"
+		else:
+			print graph[int(dest)][0]
+
+	i+=1
+

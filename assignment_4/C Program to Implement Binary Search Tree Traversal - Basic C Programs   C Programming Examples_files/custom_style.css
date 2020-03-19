@@ -1,0 +1,22 @@
+pre{background-color:#f6f8ff;border:1px solid #ddd;padding:5px;font-size:15px;line-height:18px;font-family:"Courier New", Courier, monospace;margin-bottom: 10px;margin-top: 10px;}
+a{color:#4B53AC;} h1,h2,h3,h4,h5,h6{font-style:normal;font-weight:400;} .pagewidth{width:1100px;} #contentwrap{width:70%;} #sidebar{width:28%;} .sidebar2 #sidebar-alt{width:24.49%;padding-right:3px;border-right:1px dashed #ccc;} .col4-3{width:67.8%;} #site-logo{top:10px;} .header-widget{top:25px;padding-left:370px;} .pagenav{padding-bottom:10px;text-align:left;border-bottom:1px solid #BDBDBD;border-top:1px solid #BDBDBD;padding-top:10px;margin:10px 0 0;} .pagenav a,.pagenav span{min-width:26px;padding:5px 0;} #sidebar-alt{margin:10px 0 20px;} .widgettitle{font-style:normal;color:#fff;background-color:#000;font-weight:700;text-transform:none;margin:5px 0;padding:4px 2px 4px 15px;} .widget li{padding-left:3px;display:block;border-bottom:1px dotted #BBB;} .widget li a{display:block;} #post-pagination{background-color:#DCF4C9;margin-top:20px;padding:5px;} #cbprotect{padding-top:10px;} .posts-by-tag-list li{font-size:12px;font-weight:700;border-bottom:2px solid #EFF0F1;padding:5px 3px 5px 5px;} .PostWidgetTitle{font-size:14px;font-style:normal;background-color:#258a25;color:#fff;margin:3px 0 10px;padding:3px 2px 3px 5px;} 
+input[type=email], input[url] {width:160px;max-width: 90%;}
+table.easy-table {max-width:100%;background-color:transparent;border-collapse:collapse;border-spacing:0;}
+.easy-table{width:100%;margin-bottom:18px;}.easy-table th,.easy-table td{padding:8px;line-height:18px;text-align:left;vertical-align:top;border-top:1px solid #dddddd;}
+.easy-table th{font-weight:bold;}
+.easy-table thead th{vertical-align:bottom;}
+.easy-table caption+thead tr:first-child th,.easy-table caption+thead tr:first-child td,.easy-table colgroup+thead tr:first-child th,.easy-table colgroup+thead tr:first-child td,.easy-table thead:first-child tr:first-child th,.easy-table thead:first-child tr:first-child td{border-top:0;}
+.easy-table tbody+tbody{border-top:2px solid #dddddd;}
+.table-condensed th,.table-condensed td{padding:4px 5px;}
+.table-bordered{border:1px solid #dddddd;border-collapse:separate;*border-collapse:collapsed;border-left:0;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}.table-bordered th,.table-bordered td{border-left:1px solid #dddddd;}
+.table-bordered caption+thead tr:first-child th,.table-bordered caption+tbody tr:first-child th,.table-bordered caption+tbody tr:first-child td,.table-bordered colgroup+thead tr:first-child th,.table-bordered colgroup+tbody tr:first-child th,.table-bordered colgroup+tbody tr:first-child td,.table-bordered thead:first-child tr:first-child th,.table-bordered tbody:first-child tr:first-child th,.table-bordered tbody:first-child tr:first-child td{border-top:0;}
+.table-bordered thead:first-child tr:first-child th:first-child,.table-bordered tbody:first-child tr:first-child td:first-child{-webkit-border-top-left-radius:4px;border-top-left-radius:4px;-moz-border-radius-topleft:4px;}
+.table-bordered thead:first-child tr:first-child th:last-child,.table-bordered tbody:first-child tr:first-child td:last-child{-webkit-border-top-right-radius:4px;border-top-right-radius:4px;-moz-border-radius-topright:4px;}
+.table-bordered thead:last-child tr:last-child th:first-child,.table-bordered tbody:last-child tr:last-child td:first-child{-webkit-border-radius:0 0 0 4px;-moz-border-radius:0 0 0 4px;border-radius:0 0 0 4px;-webkit-border-bottom-left-radius:4px;border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;}
+.table-bordered thead:last-child tr:last-child th:last-child,.table-bordered tbody:last-child tr:last-child td:last-child{-webkit-border-bottom-right-radius:4px;border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;}
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th{background-color:#f9f9f9;}
+.easy-table tbody tr:hover td,.easy-table tbody tr:hover th{background-color:#f5f5f5;}
+table.easy-table caption{
+	font-weight:bold;
+}

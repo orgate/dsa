@@ -1,0 +1,10 @@
+A + B
+A - B / C
+A ^ - B
+- B ^ A
+a + 3 * b - c / ( 2 - d ) + 2 ^ 3
+- b + sqrt ( b * b - 4 * a * c ) / ( 2 * a )
+a * b * c
+a + - ( b - c )
+a + - sqrt ( b - c )
+a - - b
